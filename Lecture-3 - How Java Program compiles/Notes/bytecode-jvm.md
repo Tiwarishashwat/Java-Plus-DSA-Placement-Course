@@ -1,4 +1,4 @@
-#What is Java?
+# What is Java?
 Java is a programming language which is object oriented by nature.
 
 1. It is owned by Oracle.
@@ -24,13 +24,13 @@ Java is an island in Indonesia where the first coffee was produced (called Java 
 It is a kind of espresso bean.
 Java name was chosen by James Gosling while having a cup of coffee nearby his office.
 
-#Why coffee Logo?
+# Why coffee Logo?
 The Java logo is prototyped as a blue coffee cup with red steam above it. 
 The logo was a recognition for the Java engineers, who have a lot of coffee 
 while developing the Java programming language. 
 The coffee that they have consumed was Java coffee beans. It is a variety of coffee.
 
-#What is JDK?
+# What is JDK?
 JDK, or Java Development Kit, consist of tools that are used to develop and run Java code. 
 Before develop and run Java code, you should install it in your computer or system.
 JDK consists of JRE and Java development tools.
@@ -45,13 +45,13 @@ To run code, we need JVM. JVM in each OS is different and to running Java,
 We require an JVM compatible with the operating system.
 JVM is nothing but a interpreter
 
-#Why is Java platform-independent?
+# Why is Java platform-independent?
 Java is platform-independent because it uses a virtual machine.
 Bytecodes are effectively platform-independent. 
 The virtual machine takes care of the differences between the bytecodes for the different platforms,
 thus JVM is platform dependent!
 
-#How a Java Program compiles?
+# How a Java Program compiles?
 Java code involves a two-step execution, 
 first through an OS-independent compiler; 
 and second, in a virtual machine (JVM) which is custom-built 
@@ -67,7 +67,7 @@ To run, the main class file (the class that contains the method main) is passed
 to the JVM and then goes through three main stages before the 
 final machine code is executed. 
 
-#These stages are:
+# These stages are:
 1. ClassLoader
 The main class is loaded into the memory bypassing its ‘.class’ file to the JVM.
 All the other classes referenced in the program are loaded through the class loader.

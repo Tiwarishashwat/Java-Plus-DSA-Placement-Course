@@ -14,13 +14,13 @@ Main advantage is "Code Reusability".
 
 The Exception list will be covered in Exception Handling.
 
-1. Predefined Method: 
+## 1. Predefined Method: 
 Predefined methods are the method that is already defined in the Java class libraries is known as predefined methods. It is also known as the standard library method or built-in method. We can directly use these methods just by calling them in the program at any point. 
 
-2. User-defined Method:
+## 2. User-defined Method:
 The method written by the user or programmer is known as a user-defined method. These methods are modified according to the requirement.
 
-Method Signature
+### Method Signature
 It consists of the method name and a parameter list (number of parameters, type of the parameters, and order of the parameters).
 Example
 
@@ -46,18 +46,14 @@ In Java, all primitives like int, char, etc are pass by value.
 
 Java creates a copy of references and pass it to method, but they still point to same memory reference.
 
-Method Overloading in Java
+## Method Overloading in Java
 When there are two or more than two methods in a class that have the same name but different parameters, it is known as method overloading. Java allows a function to have the same name if it can distinguish them by their number and type of arguments.
 
 
-Types of instance methods (non-static):
+### Types of instance methods (non-static):
 1. Accessor Method
 2. Mutator Method
 
 The method(s) that reads the instance variable(s) is known as the accessor method.
 They are also known as getter.
 The method(s) read the instance variable(s) and also modify the values are known as the mutator methods. They are also known as setter.
-
-Method overloading
-
-

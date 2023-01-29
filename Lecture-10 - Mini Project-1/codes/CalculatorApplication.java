@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class CalculatorApplication {
     public static void main(String[] args) {
-//        System.out.println("Hi coder");
 
         CalculatorApplication obj = new CalculatorApplication();
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Welcome to Calculator Application - By Java Plus DSA");
+       
         // Take input from user and decide which operation to perform
        do {
            System.out.println("Choose an Operation: ( *, +, -, %, / )");
@@ -25,7 +25,16 @@ public class CalculatorApplication {
             }
        } while (true);
         System.out.println("Thanks for using our service");
+        
     }
+    
+    /*
+    This function will prompt the user to enter his choice on exiting the program.
+    If user chooses 'y' then program will exit.
+    If user chooses 'n' then program will continue.
+    If wrong input is given, then program will retry at max 5 times and after that
+    it will exit forcefully
+    */
     public boolean exitProgram(){
         Scanner sc = new Scanner(System.in);
         int times = 0;
@@ -48,11 +57,19 @@ public class CalculatorApplication {
         }
         return false;
     }
+    
+    // function to take integer as input
     public int getInteger(){
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number -> ");
         int num = sc.nextInt();
        return num;
     }
+    
+    /*
+    Take a character as input and decides which operation to perform.
+    In case none of the operations match, it will prompt 'Unknown Operation' 
+    */
     public void chooseOperation(char ch){
 
 

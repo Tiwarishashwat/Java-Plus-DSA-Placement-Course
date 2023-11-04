@@ -41,7 +41,7 @@ If the program is executed, this function is logically evaluated as needed.
 into an object and encourages reuse of these objects within the same and other programs.
 4. Example is JAVA
 
-# D. Scipting Language
+# D. Scripting Language
 1. scripting language is a programming language that employs a high-level construct to interpret 
 and execute one command at a time. 
 2. In general, scripting languages are easier to learn and faster to code in 

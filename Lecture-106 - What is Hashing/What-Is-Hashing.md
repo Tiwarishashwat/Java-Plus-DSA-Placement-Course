@@ -10,12 +10,12 @@ and let's say that F(X) will generate a hashCode 111@aba for a key 10,
 Therefore whenever you pass 10 to F(X), it should return 111@aba.
 
 # Where do we use hashing?
-1. Storing password in server side: when we create a user account on any social media
+## 1. Storing password in server side: when we create a user account on any social media
 site (say instagram), then our information is stored into the database of that social
 media, but but but our password is not stored as a clean text, it is converted into a
 hashCode and this code is modified with a technique called salting & peppering 
 (two layer of protection). This is done to protect password.
-2. Storing Record: When a user enters a new record, certain column(s) of the record
+## 2. Storing Record: When a user enters a new record, certain column(s) of the record
 are more valuable and unique across all the records(primary key).Therefore, this record
 is converted into Key-Value pair, here Key is primary key and value is other data 
 entered by the user. So this primary key is treated as a "Key" to our "hashFunction". 
@@ -39,7 +39,7 @@ we store the data of shashwat at index 3 of hashTable.
 Now, whenever we want data of any student, we can pass the rollNumber and in constant
 time we will get the data back.
 
-#Different Types of HashFunctions:
+# Different Types of HashFunctions:
 There are many types of hashFunctions & you can even write your own, but we will
 study some of the common ones.
 
@@ -78,7 +78,7 @@ Hash Calculation: Apply a hash function to the combined result.
 Modulo Operation: Optionally, you may perform a modulo operation to ensure that 
 the hash value fits within a specific range (e.g., the size of a hash table).
 
-#Collision Resolution Technique:
+# Collision Resolution Technique:
 Collision resolution is a crucial aspect of hash table design, as collisions 
 occur when two or more keys hash to the same index in the table. There are several
 techniques to handle collisions and ensure that each key is stored in the hash table

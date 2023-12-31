@@ -10,12 +10,13 @@ and let's say that F(X) will generate a hashCode 111@aba for a key 10,
 Therefore whenever you pass 10 to F(X), it should return 111@aba.
 
 # Where do we use hashing?
-## 1. Storing password in server side: when we create a user account on any social media
-site (say instagram), then our information is stored into the database of that social
-media, but but but our password is not stored as a clean text, it is converted into a
-hashCode and this code is modified with a technique called salting & peppering 
-(two layer of protection). This is done to protect password.
-## 2. Storing Record: When a user enters a new record, certain column(s) of the record
+## 1. Storing password in server side: 
+when we create a user account on any social media site (say instagram), then our information 
+is stored into the database of that social media, but but but our password is not stored as a 
+clean text, it is converted into a hashCode and this code is modified with a technique called 
+salting & peppering (two layer of protection). This is done to protect password.
+## 2. Storing Record: 
+When a user enters a new record, certain column(s) of the record
 are more valuable and unique across all the records(primary key).Therefore, this record
 is converted into Key-Value pair, here Key is primary key and value is other data 
 entered by the user. So this primary key is treated as a "Key" to our "hashFunction". 

@@ -1,4 +1,4 @@
-#What is Hashing?
+# What is Hashing?
 Hashing is a technique where you pass a key to a function and this function generates
 a code, this hashCode can be used in various places.
 Here, key is the data given by user, function is a HashFunction and code is a hashCode.
@@ -9,7 +9,7 @@ HashFunction = F(X)
 and let's say that F(X) will generate a hashCode 111@aba for a key 10,
 Therefore whenever you pass 10 to F(X), it should return 111@aba.
 
-#Where do we use hashing?
+# Where do we use hashing?
 1. Storing password in server side: when we create a user account on any social media
 site (say instagram), then our information is stored into the database of that social
 media, but but but our password is not stored as a clean text, it is converted into a
@@ -23,7 +23,7 @@ The hashFunction generates a unique hashCode, this hashCode is further mapped to
 memory address. We use this memory address to store the data. So, Whenever we want to
 get our data, we can get in constant time.
 
-#Working of HashFunction:
+# Working of HashFunction:
 We have a data structure called "hashTable" of size M. This data structure is used
 to store key-value pairs.
 So, the flow is like user enters data as below
@@ -43,7 +43,7 @@ time we will get the data back.
 There are many types of hashFunctions & you can even write your own, but we will
 study some of the common ones.
 
-##1. Division Method:
+## 1. Division Method:
 Formula is (Key)Mod(Size of hashTable).
 Generally the size of the hashTable is taken as a prime number.
 Example: Keys -> [11,10,66,...] and M=11 (size of hashTable)
@@ -56,7 +56,7 @@ So, this situation is called collision, where we have multiple keys generating t
 hashCode :)
 This will be taken care by collision resolution technique.(explained later)
 
-##2. MidSquare Method:
+## 2. MidSquare Method:
 Formula: FindMid-R-Digits(Key^2)modM
 The mid-square method squares the key value, and then takes the middle r bits of the
 result, giving a value in the range 0 to 2^r-1. For example, consider records whose
@@ -66,7 +66,7 @@ base 10. That is, r = 1. If the input is the number 11, squaring yields an 3-dig
 number, 121. The middle digit of this result is 2. Hence, Data is stored at the 2nd
 index of hashTable. 
 
-##3. Folding Method: The folding method in hashing involves dividing the input into 
+## 3. Folding Method: The folding method in hashing involves dividing the input into 
 smaller units (often digits) and combining them in some way to generate the hash 
 value. The specific steps may vary, but the general idea is to partition the input
 data into chunks, add or concatenate them, and then perform some operation to
@@ -84,47 +84,47 @@ occur when two or more keys hash to the same index in the table. There are sever
 techniques to handle collisions and ensure that each key is stored in the hash table
 without overwriting other keys. Here are some common collision resolution techniques:
 
-##A. Closed Hashing: In case of collision, store the data in same table.
-###1. Linear Probing:
+## A. Closed Hashing: In case of collision, store the data in same table.
+### 1. Linear Probing:
 If a collision occurs, the algorithm searches for the next available slot linearly
 (sequentially) until an empty slot is found. Linear probing is straightforward
 but may lead to clustering, where consecutive slots are occupied, 
 increasing the likelihood of further collisions.
 Disadvantage: Primary and Secondary Clustering.
 
-###2. Quadratic Probing:
+### 2. Quadratic Probing:
 Similar to linear probing, but the interval between probes is determined by a 
 quadratic function.
 This helps reduce primary clustering, but it still suffers from secondary clustering.
 
-###3. Double Hashing:
+### 3. Double Hashing:
 In this method, a secondary hash function is used to calculate the interval 
 between probes. The formula for finding the next slot is typically of the form:
 hash2(key)×i, where i is the number of probes attempted.
 Double hashing can provide a good distribution of keys and reduces clustering.
 
-##B. Open Hashing: We store data outside the hashTable in case of collision.
-###1. Chaining (Separate Chaining):
+## B. Open Hashing: We store data outside the hashTable in case of collision.
+### 1. Chaining (Separate Chaining):
 In this technique, each hash table slot (bucket) maintains a linked list of all
 the keys that hash to the same index. When a collision occurs, the new key is 
 added to the linked list at the corresponding slot.
 Chaining is easy to implement and handles multiple collisions well.
 
 
-#Probe Number:
+# Probe Number:
 the term "probe number" refers to the number of attempts made to find an available
 slot for a key that has caused a collision. When a collision occurs 
 (i.e., two keys hash to the same slot), the hash table needs to resolve it by finding
 another open slot. The sequence of attempts to find an open slot is known as 
 the "probe sequence," and each attempt is counted as a probe.
 
-#Primary and Secondary Clustering
+# Primary and Secondary Clustering
 Primary clustering and secondary clustering are terms used to describe phenomena
 that can occur in hash tables, particularly in the context of open addressing
 collision resolution techniques like linear probing, quadratic probing, and 
 double hashing.
 
-#Primary Clustering:
+# Primary Clustering:
 Primary clustering refers to the tendency of hash table slots to become filled 
 with consecutive elements due to the hash function's behaviour.
 When two or more keys hash to the same index, the probing sequence 
@@ -134,7 +134,7 @@ i+2, and so on.
 Primary clustering can be problematic because it increases the likelihood of 
 further collisions and can lead to inefficient search times.
 
-#Secondary Clustering:
+# Secondary Clustering:
 Secondary clustering, also known as clustering around a probe sequence, 
 occurs during open addressing when a collision is resolved by using a probing 
 sequence. It involves the clustering of keys along the specific sequence of 
@@ -156,7 +156,7 @@ Proper tuning of hash functions and probing sequences is essential to minimise
 clustering and optimise the performance of hash tables.
 
 
-#What is Load Factor?
+# What is Load Factor?
 The load factor in hashing is a measure of how full the hash table is. 
 It is expressed as the ratio of the number of elements stored in the hash table
 to the total number of slots in the table. 
@@ -171,7 +171,7 @@ operations since there is less chance of collisions. On the other hand, a high l
 factor (close to 1) means that the hash table is approaching its capacity, 
 increasing the likelihood of collisions and potentially slowing down operations.
 
-#Rehashing:
+# Rehashing:
 Lets say we have a threshold of 0.75, so whenever our load factor is greater than or
 equal to 0.75, we double the size of the hashTable and hash our data into the new 
 hashTable. This concept is called rehashing.

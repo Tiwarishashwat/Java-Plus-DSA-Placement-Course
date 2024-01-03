@@ -25,14 +25,14 @@ and this thread gets destroyed only when the Java program stops execution.
 # Example of a function signature?
 public static void main(String[] args)
 
-public is a access specifier!
-static is a keyword!
-void is a return type!
-main is the name of the method!
-() dennotes the function
-String is a data type
-[] dennotes an array
-args is the local variable name which is passed as a function parameter!
+- public is a access specifier!
+- static is a keyword!
+- void is a return type!
+- main is the name of the method!
+- () dennotes the function
+- String is a data type
+- [] dennotes an array
+- args is the local variable name which is passed as a function parameter!
 
 # Why main method uses public keyword?
 Public is an Access modifier, which specifies from where and who can access the method. 

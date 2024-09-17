@@ -40,16 +40,20 @@ public class MathsForDSA2 {
         int count = (int)Math.log10(num) + 1;
         System.out.println("Digits are :"+ count);
     }
-    public static void armstrongNumber(int num){
-        int res = 0;
-        int copy = num;
-        while (num>0){
-            int digit = num%10;
-            res = res + (int)Math.pow(digit,3);
+  public static void armstrongNumber(int num) {
+        int originalNum = num;
+        int numberOfDigits = Integer.toString(num).length();
+        int sum = 0;
+        
+        // Calculate the sum of each digit raised to the power of the number of digits
+        while (num > 0) {
+            int digit = num % 10;
+            sum += Math.pow(digit, numberOfDigits);
             num /= 10;
         }
-           System.out.println(res==copy);
-
+        
+        // Check if the sum is equal to the original number
+        System.out.println(sum == originalNum);
     }
     public static void printAllDivisors(int num){
         int counter = 1;

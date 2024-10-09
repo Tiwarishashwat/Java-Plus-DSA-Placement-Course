@@ -1,100 +1,117 @@
-public class BinarySearch3 {
-    public static void main(String[] args) {
 
-        int arr[] = {2,4,6,8,11,16,13,11,9,3,2,1};
-//        findMinElementInBitonicArray(arr);
-//        int arr[] = {22,12,5,2,1,0};
-//        int index = findPeakElementInBitonicArray(arr);
-//        if(index == -1) {
-//            System.out.println("Element does not exist");
-//        } else {
-//            System.out.println("Found "+arr[index]+" at: "+ index);
-//        }
-//        findElementInBitonicArray(arr,11);
-    }
 
-    static void findElementInBitonicArray(int arr[], int target){
-        int index = findPeakElementInBitonicArray(arr);
-        if(index == -1 || target > arr[index]) {
-            System.out.println("Element does not exist");
-        } else {
-                if(target == arr[index]){
-                    System.out.println("Found "+arr[index]+" at: "+ index);
-                    return;
-                }
-            // search in left half
-                int ans = binarySearch(arr,0,index-1,target);
-                if(ans == -1){
-                    // search in right half
-                    ans = binarySearchDesc(arr,index+1,arr.length-1,target);
-                }
-                if(ans == -1){
-                    System.out.println("Element does not exist");
-                } else {
-                    System.out.println("Found "+arr[ans]+" at: "+ ans);
-                }
+// leetcode 941. Valid Mountain Array
+class Solution {
+    // operations: O(N)
+    public boolean validMountainArray(int[] arr) {
+        int index=0;
+        int n = arr.length;
+        // find all increasing seq (find the peak)
+        while(index<n-1){
+            if(arr[index]<arr[index+1]){
+                index++;
+            }else{
+                break;
+            }
         }
+        if(index==0 || index==n-1){
+            return false;
+        }
+
+        // find all decreasing seq (find the end of the array)
+        while(index<n-1){
+            if(arr[index]>arr[index+1]){
+                index++;
+            }else{
+                break;
+            }
+        }
+        return (index==n-1);
+
     }
-    static int findPeakElementInBitonicArray(int arr[]){
-        int start = 0;
-        int end = arr.length-1;
-        while (start<=end){
+}
+
+// leetcode 852. Peak Index in a Mountain Array
+class Solution {
+    public int peakIndexInMountainArray(int[] arr) {
+        int n = arr.length;
+        int start=0;
+        int end=n-1;
+        while(start<=end){
             int mid = start + (end-start)/2;
-            int next = (mid+1)%arr.length;
-            int prev = (mid-1 + arr.length)%arr.length;
-            if(arr[mid] > arr[prev] && arr[mid] > arr[next]){
+            if(mid!=0 && mid!=n-1 && arr[mid]>arr[mid-1] && arr[mid]>arr[mid+1]){
                 return mid;
-            }else if(arr[mid] > arr[prev]){
+            }else if(mid!=n-1 && arr[mid]<arr[mid+1]){ //inc
                 start = mid+1;
-            } else {
+            }else{ //dec
                 end = mid-1;
+            }
+        }
+        return -1; //never be returned
+    }
+}
+
+// leetcode 1095: find in mountain array
+/**
+ * // This is MountainArray's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface MountainArray {
+ *     public int get(int index) {}
+ *     public int length() {}
+ * }
+ */
+ 
+class Solution {
+    public int findInMountainArray(int target, MountainArray mountainArr) {
+        // find peak index
+        int n = mountainArr.length();
+        int start=0;
+        int end=n-1;
+        int mid=-1;
+        while(start<=end){
+            mid = start + (end-start)/2;
+            int cur = mountainArr.get(mid);
+            if(mid!=0 && mid!=n-1 && cur>mountainArr.get(mid-1) 
+            && cur >mountainArr.get(mid+1)){
+                if(cur==target){
+                    return mid;
+                }
+                break;
+            }else if(mid!=n-1 && cur<mountainArr.get(mid+1)){ //inc
+                start = mid+1;
+            }else{ //dec
+                end = mid-1;
+            }
+        }
+        // find in first half (increasing)
+        start = 0;
+        end = mid-1;
+        while(start<=end){
+            int m = start + (end-start)/2;
+            int cur = mountainArr.get(m);
+            if(cur==target){
+                return m;
+            }else if(target<cur){
+                end=m-1;
+            }else{
+                start=m+1;
+            }
+        }
+
+        // find in second half (decreasing array)
+        start = mid+1;
+        end = n-1;
+        while(start<=end){
+            int m = start + (end-start)/2;
+            int cur = mountainArr.get(m);
+            if(cur==target){
+                return m;
+            }else if(target<cur){
+                start=m+1;
+            }else{
+                end=m-1;
             }
         }
         return -1;
-    }
-
-    static void findMinElementInBitonicArray(int arr[]){
-        if(arr.length == 0) {
-            System.out.println("Array is empty");
-        }else if(arr.length==1){
-            System.out.println("Min element is: "+ arr[0]);
-        }
-        else {
-            int res = (arr[0]<arr[arr.length-1])?arr[0]:arr[arr.length-1];
-            System.out.println("Min element is: "+ res);
-        }
-    }
-
-    static int binarySearch(int arr[],int start, int end, int target){
-        int ans = -1;
-        while (start<=end){
-            int mid = start + (end-start)/2;
-            if(arr[mid] == target){
-                ans = mid;
-                break;
-            } else if(arr[mid]<target){
-                start = mid+1;
-            } else {
-                end = mid-1;
-            }
-        }
-      return ans;
-    }
-    static int binarySearchDesc(int arr[],int start,int end, int target){
-        int ans = -1;
-        while (start<=end){
-            int mid = start + (end-start)/2;
-            if(arr[mid] == target){
-                ans = mid;
-                break;
-            } else if(arr[mid]<target){
-                end = mid-1;
-            } else {
-                start = mid+1;
-            }
-        }
-        return ans;
-
-
     }
 }

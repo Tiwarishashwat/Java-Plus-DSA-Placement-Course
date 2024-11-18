@@ -19,6 +19,15 @@ public class BitManipulation {
         }
         System.out.println();
     }
+    //instead of limiting the printBit function to 8 digits only we can print any binary number from this approach
+public static void printBits(int num){
+    int digit=(int)(Math.log10(num)/Math.log10(2));
+        while(digit>0){
+            System.out.print((num>>digit) & 1);
+        }
+        System.out.println();
+    }
+    
     public static void printOddEven(int num){
         if(isBitSet(num,0)){
             System.out.println("Number is odd");

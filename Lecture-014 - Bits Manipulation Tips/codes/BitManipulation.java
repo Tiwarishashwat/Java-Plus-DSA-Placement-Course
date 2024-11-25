@@ -24,6 +24,7 @@ public static void printBits(int num){
     int digit=(int)(Math.log10(num)/Math.log10(2));
         while(digit>=0){
             System.out.print((num>>digit) & 1);
+            digit--;
         }
         System.out.println();
     }

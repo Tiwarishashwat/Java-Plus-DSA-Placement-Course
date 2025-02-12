@@ -183,7 +183,7 @@ public class MathsForDSA2 {
 
     static void findTrailingZerosInFactorial(int num){
         double res = 0;
-        for(int i = 5;i<=num;i=i*i){
+        for(int i = 5;i<=num;i=i*5){
             res = res + Math.floor(num/i);
         }
         System.out.println(res);

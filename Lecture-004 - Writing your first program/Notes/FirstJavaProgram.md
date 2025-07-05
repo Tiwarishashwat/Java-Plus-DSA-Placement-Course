@@ -2,7 +2,7 @@
 https://www.oracle.com/java/technologies/downloads/
 
 # Link for Java Document 
-https://docs.oracle.com/en/java/javase/19/
+https://docs.oracle.com/en/java/javase/21/
 
 # Link for VS Code
 https://code.visualstudio.com/download

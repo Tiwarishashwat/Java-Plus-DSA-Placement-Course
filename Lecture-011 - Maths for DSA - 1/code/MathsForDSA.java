@@ -1,3 +1,34 @@
+//         decimalno,base
+//         power=0 ans=0
+//         while(decimal_no>0){
+//            int rem=decimal_no%base;
+//            decimal_no=decimal_no/base;
+//            ans+=rem*Math.pow(10,power);
+//            power++;
+//         }
+//     }
+    
+    
+//     a,b
+//     while(b>0){
+//         if(b%2!=0){
+//             res=res*a;
+//         }
+//         b=b/2;
+//         a=a*a;
+//     }
+// }
+
+// 2,5
+// res=2
+// b=2
+// a=4
+// b=1
+// a=16
+// res=32
+// a=16*16
+// final-------------------res=32
+
 public class MathsForDSA {
     public static void main(String[] args) {
             decimalToAnyBase(5,2);

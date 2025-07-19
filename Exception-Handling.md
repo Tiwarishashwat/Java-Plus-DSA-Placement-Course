@@ -1,11 +1,11 @@
 
-# ✳️ Exception Handling in Java – Quick Revision Notes
+#  Exception Handling in Java
 
-## ✅ What is an Exception?
+##  What is an Exception?
 - An **exception** is an event that disrupts the normal flow of program execution (e.g., divide by zero, null access, invalid file).
 - **Exceptions can be handled** using try-catch blocks.
 
-## ❌ What is an Error?
+##  What is an Error?
 - Errors are **serious issues** like `OutOfMemoryError`, `StackOverflowError`, etc.
 - They are **not meant to be caught or handled** in code.
 
@@ -13,7 +13,7 @@
 
 ---
 
-## 🔰 Types of Exceptions
+##  Types of Exceptions
 
 ### 1. **Built-in Exceptions**
 
@@ -34,7 +34,7 @@ Checked during runtime. **No compiler enforcement** to handle.
 - `ClassCastException`
 - `IllegalArgumentException`
 
-> 🔹 All unchecked exceptions are subclasses of `RuntimeException`.
+>  All unchecked exceptions are subclasses of `RuntimeException`.
 
 ---
 
@@ -51,9 +51,9 @@ class MyException extends Exception {
 
 ---
 
-## 🔄 Exception Handling Keywords
+##  Exception Handling Keywords
 
-### ✅ try-catch Block
+###  try-catch Block
 ```java
 try {
     // risky code
@@ -62,7 +62,7 @@ try {
 }
 ```
 
-### 🔚 finally Block
+###  finally Block
 Always executes (even if exception is not thrown or caught). Used for cleanup.
 
 ```java
@@ -75,13 +75,13 @@ try {
 }
 ```
 
-### 🚀 throw Keyword
+###  throw Keyword
 Used to explicitly throw an exception.
 ```java
 throw new IllegalArgumentException("Invalid input");
 ```
 
-### 📝 throws Keyword
+###  throws Keyword
 Used in method signature to declare exceptions.
 ```java
 public void readFile() throws IOException, SQLException {
@@ -91,9 +91,9 @@ public void readFile() throws IOException, SQLException {
 
 ---
 
-## 🆕 Java 7+ Enhancements
+##  Java 7+ Enhancements
 
-### 🔁 Multi-Catch Block
+###  Multi-Catch Block
 ```java
 try {
     // code
@@ -102,7 +102,7 @@ try {
 }
 ```
 
-### 🔐 try-with-resources
+###  try-with-resources
 Auto-close resources like files, DB connections, etc.
 ```java
 try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
@@ -114,7 +114,7 @@ try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
 
 ---
 
-## 🆚 Exception vs Error vs RuntimeException
+##  Exception vs Error vs RuntimeException
 
 | Type              | Inherits   | Meant to be Handled? | Checked? |
 |-------------------|------------|-----------------------|----------|

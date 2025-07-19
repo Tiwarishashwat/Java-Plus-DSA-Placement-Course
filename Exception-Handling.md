@@ -9,7 +9,7 @@
 - Errors are **serious issues** like `OutOfMemoryError`, `StackOverflowError`, etc.
 - They are **not meant to be caught or handled** in code.
 
-> 🔹 Both `Exception` and `Error` inherit from the `Throwable` class.
+>  Both `Exception` and `Error` inherit from the `Throwable` class.
 
 ---
 

@@ -45,40 +45,7 @@ for (int i = 0; i < arr.length; i++) {
 }
 ```
 
-## 10. Static vs Dynamic Data Structures
-
-| Static (Array)        | Dynamic (ArrayList)     |
-|-----------------------|-------------------------|
-| Fixed Size            | Grows/Shrinks at runtime|
-| Fast access           | Slower access           |
-| Less flexible         | More flexible           |
-
-```java
-ArrayList<Integer> list = new ArrayList<>();
-list.add(10); list.remove(0);
-```
-
-## 11. Size vs Capacity (in Dynamic Arrays)
-
-- **Capacity**: The total number of elements the array can currently hold.
-- **Size**: The number of elements actually present in the array.
-
-In `ArrayList`, the capacity grows automatically when size exceeds it.
-
-```java
-ArrayList<Integer> list = new ArrayList<>();
-list.add(10);
-list.add(20);
-// list.size() returns number of elements added
-```
-
-Internally, when capacity is exceeded:
-- A new, larger array is created.
-- All elements are copied over (this takes O(n)).
-
-That’s why adding to an ArrayList is amortized O(1), but worst case can be O(n).
-
-## 12. Shifting Elements in Array
+## 10. Shifting Elements in Array
 
 ### Required for inserting/deleting in middle
 
@@ -105,6 +72,40 @@ for (int i = index; i < size - 1; i++) {
 }
 size--;
 ```
+
+## 11. Static vs Dynamic Data Structures
+
+| Static (Array)        | Dynamic (ArrayList)     |
+|-----------------------|-------------------------|
+| Fixed Size            | Grows/Shrinks at runtime|
+| Fast access           | Slower access           |
+| Less flexible         | More flexible           |
+
+```java
+ArrayList<Integer> list = new ArrayList<>();
+list.add(10); list.remove(0);
+```
+
+## 12. Size vs Capacity (in Dynamic Arrays)
+
+- **Capacity**: The total number of elements the array can currently hold.
+- **Size**: The number of elements actually present in the array.
+
+In `ArrayList`, the capacity grows automatically when size exceeds it.
+
+```java
+ArrayList<Integer> list = new ArrayList<>();
+list.add(10);
+list.add(20);
+// list.size() returns number of elements added
+```
+
+Internally, when capacity is exceeded:
+- A new, larger array is created.
+- All elements are copied over (this takes O(n)).
+
+That’s why adding to an ArrayList is amortized O(1), but worst case can be O(n).
+
 
 ## 13. Multidimensional Arrays (2D Arrays)
 ```java

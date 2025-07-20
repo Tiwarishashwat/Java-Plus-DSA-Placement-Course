@@ -58,7 +58,27 @@ ArrayList<Integer> list = new ArrayList<>();
 list.add(10); list.remove(0);
 ```
 
-## 11. Shifting Elements in Array
+## 11. Size vs Capacity (in Dynamic Arrays)
+
+- **Capacity**: The total number of elements the array can currently hold.
+- **Size**: The number of elements actually present in the array.
+
+In `ArrayList`, the capacity grows automatically when size exceeds it.
+
+```java
+ArrayList<Integer> list = new ArrayList<>();
+list.add(10);
+list.add(20);
+// list.size() returns number of elements added
+```
+
+Internally, when capacity is exceeded:
+- A new, larger array is created.
+- All elements are copied over (this takes O(n)).
+
+That’s why adding to an ArrayList is amortized O(1), but worst case can be O(n).
+
+## 12. Shifting Elements in Array
 
 ### Required for inserting/deleting in middle
 
@@ -86,28 +106,28 @@ for (int i = index; i < size - 1; i++) {
 size--;
 ```
 
-## 12. Multidimensional Arrays (2D Arrays)
+## 13. Multidimensional Arrays (2D Arrays)
 ```java
 int[][] matrix = new int[3][3];
 int[][] matrix2 = { {1,2}, {3,4} };
 ```
 
-## 13. Insert in 2D Array
+## 14. Insert in 2D Array
 ```java
 matrix[i][j] = value;
 ```
 
-## 14. Delete in 2D Array
+## 15. Delete in 2D Array
 ```java
 matrix[i][j] = 0;  // Overwrite
 ```
 
-## 15. Update in 2D Array
+## 16. Update in 2D Array
 ```java
 matrix[i][j] = newValue;
 ```
 
-## 16. Traverse a 2D Array
+## 17. Traverse a 2D Array
 ```java
 for (int i = 0; i < matrix.length; i++) {
     for (int j = 0; j < matrix[i].length; j++) {
@@ -117,7 +137,7 @@ for (int i = 0; i < matrix.length; i++) {
 }
 ```
 
-## 17. Jagged Array
+## 18. Jagged Array
 - 2D array with different column sizes
 ```java
 int[][] jagged = new int[2][];
@@ -125,11 +145,11 @@ jagged[0] = new int[3];
 jagged[1] = new int[2];
 ```
 
-## 18. Matrix Representation
+## 19. Matrix Representation
 - Matrix = 2D Array
 - Used in image processing, graphs, game logic
 
-## 19. Time Complexities
+## 20. Time Complexities
 
 | Operation      | Time Complexity |
 |----------------|------------------|

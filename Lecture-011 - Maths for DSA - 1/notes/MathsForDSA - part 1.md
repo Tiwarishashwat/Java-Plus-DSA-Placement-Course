@@ -1,6 +1,6 @@
-## 🧮 Maths for DSA Part 1 – Number Systems & Basics
+## Maths for DSA Part 1 – Number Systems & Basics
 
-### 🔢 Number System
+### Number System
 **Definition**: Represents values using digits or symbols in a consistent manner (e.g., binary, decimal, hexadecimal).
 
 Any number of Base N means that it has digits from 0 to N-1
@@ -15,7 +15,7 @@ Note: HexaDecimal has given some special names in the form of Alphabets to 10, 1
 
 ---
 
-### 🔁 Conversion of Number System
+### Conversion of Number System
 Convert numbers between different bases.
 
 #### Any Base to Decimal
@@ -85,7 +85,7 @@ String convertFromDecimal(int num, int base) {
 
 ---
 
-### 🧮 Digit Extraction and Manipulation
+### Digit Extraction and Manipulation
 
 #### Extract & Reduce Digits
 To process each digit of a number (from last to first), we use:
@@ -146,7 +146,7 @@ newNum = 4 * 100 + 23 = 423
 
 ---
 
-### 🔀 Conversion Code Snippets
+### Conversion Code Snippets
 
 - Decimal to Binary – O(log₂n)
 - Decimal to Any Base – O(logₙ base)
@@ -166,7 +166,7 @@ boolean isEven(int n) {
 
 ---
 
-### 🔄 Reverse a Number
+### Reverse a Number
 Reversing a number means rearranging its digits in the opposite order. For example, reversing 1234 gives 4321.
 We extract digits from the end of the number one by one using % 10, and build the reversed number by multiplying the result by 10 and adding the extracted digit.
 
@@ -194,7 +194,7 @@ Step	n	rev
 
 ---
 
-### 🔼 Power of a Number (Normal)
+### Power of a Number (Normal)
 ```java
 int power(int a, int b) {
     int res = 1;
@@ -206,7 +206,7 @@ int power(int a, int b) {
 
 ---
 
-### ⚡ Fast Exponentiation
+### Fast Exponentiation
 Fast exponentiation (also called binary exponentiation) is a technique to calculate powers quickly — like calculating a^b — in O(log b) time instead of O(b).
 
 Why is it fast?

@@ -75,19 +75,15 @@ void printDivisors(int n) {
 }
 ```
 
-Every divisor of a number n comes in a pair (i, n/i)
-— and one of the numbers in each pair is always ≤ √n
+- Every divisor of a number n comes in a pair (i, n/i) — and one of the numbers in each pair is always ≤ √n
+- If you check all numbers i from 1 to n, the naive way takes O(n) time.
+- But if i divides n, then n/i is also a divisor. So instead of going till n, we only go till √n, and for each valid i, we print both i and n/i.
 
-
-If you check all numbers i from 1 to n, the naive way takes O(n) time.
-
-But if i divides n, then n/i is also a divisor. So instead of going till n, we only go till √n, and for each valid i, we print both i and n/i.
-
+```
 For example, for n = 36:
-
 i = 2 → 36 % 2 == 0, so both 2 and 36/2 = 18 are divisors
-
 i = 6 → 36 % 6 == 0, so both 6 and 6 are divisors (but same)
+```
 
 **Time Complexity**: O(√n)
 
@@ -120,6 +116,7 @@ It's a super-efficient algorithm to find all prime numbers from 0 to n.
 Instead of checking each number one by one, it marks all the non-prime (composite) numbers in a smart way.
 
 How it works:
+```
 Initialize all numbers as prime:
 We assume every number from 2 to n is prime (true).
 
@@ -131,8 +128,10 @@ Then mark all multiples of i starting from i*i as false (not prime).
 Why i*i? Because all smaller multiples (i*2, i*3, etc.) would’ve been marked already.
 
 Repeat till i*i <= n.
+```
 
 Why i * i <= n?
+```
 Because for any number n, if it has a factor > √n, the corresponding pair is < √n, so it would’ve already been marked by earlier primes.
 
 Example (n = 30):
@@ -147,6 +146,7 @@ i = 4 → skip (already false)
 i = 5 → mark 25, 30 as false
 
 After the loop, the indices with true are your primes.
+```
 
 ```java
 boolean[] sieve(int n) {
@@ -173,26 +173,31 @@ boolean[] sieve(int n) {
 
 The Greatest Common Divisor (GCD) of two numbers is the largest number that divides both without leaving a remainder.
 
-💡 Euclidean Algorithm Logic:
+Euclidean Algorithm Logic:
+```
 gcd(a, b) = gcd(b, a % b)
+```
 
 This works because the GCD of two numbers doesn’t change if the larger number is replaced by its remainder with the smaller number.
 
 It keeps reducing the problem until b becomes 0.
 
 At that point, a is the GCD.
-
+```
 gcd(48, 18)
 → gcd(18, 48 % 18) → gcd(18, 12)
 → gcd(12, 6)
 → gcd(6, 0) → return 6
+```
 
 Why is this true?
+```
 Because:
 The remainder (a % b) is made using a and b
 So, any number that divides a and b will also divide a % b
 And vice versa
 Thus, GCD doesn’t change — it just gets simpler!
+```
 
 ```java
 int gcd(int a, int b) {
@@ -204,12 +209,15 @@ int gcd(int a, int b) {
 ### LCM
 The Least Common Multiple (LCM) of two numbers is the smallest number that is a multiple of both.
 We use the relationship:
+```
 LCM(a, b) = (a * b) / GCD(a, b)
+```
 
 This is safe because:
-
+```
 The product a * b includes both shared and unique factors.
 Dividing by the GCD removes the common part counted twice.
+```
 
 ```java
 int lcm(int a, int b) {
@@ -237,15 +245,19 @@ But directly multiplying a b times is very slow for large b.
 So we use exponentiation by squaring — a smart trick to make it fast (O(log b)).
 
 Instead of doing:
+```
 res = a * a * a * ... * a  (b times)
+```
 
 We break b into powers of 2 using its binary representation.
+```
 Let’s say: b = 13  → binary = 1101
 
 a^13 = a^8 * a^4 * a^1
-
+```
 Only multiply the powers where the binary bit is 1.
 6^13 mod 100
+
 ```java
 int modPower(int a, int b, int mod) {
     int res = 1;
@@ -261,7 +273,8 @@ int modPower(int a, int b, int mod) {
 Let’s say: a = 3, b = 5, mod = 100
 
 Binary of 5 = 101
-```java
+
+```
 Step 1: res = 1, a = 3
 b = 5 → last bit = 1 → res = 1 × 3 = 3, then a = 3² = 9, b = 2
 
@@ -278,8 +291,9 @@ So 3^5 % 100 = 43
 ---
 
 ## Factorial
-
+```
 n! = n × (n-1) × (n-2) × ... × 2 × 1
+```
 
 ```java
 int fact(int n) {
@@ -381,6 +395,4 @@ Both functions return a double, so we cast it to int to get an integer.
 Question:
 Can you calculate floor and ceil without using Math.ceil or Math.floor ?
 ---
-
-
 

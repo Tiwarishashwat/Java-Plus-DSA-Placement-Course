@@ -1,5 +1,5 @@
 
-# 📘 Maths for DSA – Part 2
+# Maths for DSA – Part 2
 
 ## Count Digits
 
@@ -381,4 +381,5 @@ Both functions return a double, so we cast it to int to get an integer.
 Question:
 Can you calculate floor and ceil without using Math.ceil or Math.floor ?
 ---
+
 

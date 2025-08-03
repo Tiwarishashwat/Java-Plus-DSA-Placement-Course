@@ -30,7 +30,7 @@ int count = (int)Math.log10(n) + 1;
 **Definition**: A number is Armstrong if the sum of its digits raised to the number of digits equals the number.
 
 ### Example:
-153 → 1³ + 5³ + 3³ = 153 ✅
+153 → 1³ + 5³ + 3³ = 153
 
 ```java
 boolean isArmstrong(int n) {
@@ -381,5 +381,6 @@ Both functions return a double, so we cast it to int to get an integer.
 Question:
 Can you calculate floor and ceil without using Math.ceil or Math.floor ?
 ---
+
 
 

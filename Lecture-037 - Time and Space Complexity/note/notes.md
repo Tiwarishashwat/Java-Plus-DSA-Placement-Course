@@ -1,35 +1,253 @@
-What is Algorithm complexity? 
-How do we know if code is good enough or not? 
-What parameters do we consider? 
-Well, an algorithm is measured based on time and space complexity. The better the algorithm, the lesser time and space complexity it will encounter!
 
-Let's take an example: Linear Search has a complexity of N, while Binary Search has a complexity of LogN. So, when an input of Size 10^4 shows up, it will take 13.22 time complexity for the binary search algorithm, whereas it will take 10^4 time complexity for the linear search algorithm. 
+# 🎓 Lecture: Time & Space Complexity for Coding Interviews
+
+## 🧠 What You Will Learn
+- What algorithm complexity means in real-world terms  
+- How time and space complexity affect performance  
+- Practical Big-O notations and how to read them  
+- Techniques to calculate complexity in real code  
+- Optimization insights often asked in interviews  
+
+---
+
+## 📌 1. What is Algorithm Complexity?
+
+**Definition:**  
+Algorithm complexity refers to the **amount of resources** (time, space) an algorithm consumes as the input size grows.
+
+**How do we know if code is good enough or not?**  
+We measure code quality using **time** and **space complexity**. The better the algorithm, the **lesser** time and space it will require.
+
+**Example:**  
+- Linear Search → O(N)
+- Binary Search → O(log N)
+
+If `n = 10⁴`, then:
+- Linear Search takes 10,000 operations  
+- Binary Search takes around 13 operations  
 
 Now you can see why time complexity is so important!
 
-What is used to represent the complexity of Algorithms? 
-Asymptotic notation is something like standard notation that we can use to represent algorithm notation. Asymptotic is approaching a number or value, and since we can't represent our program complexity in exact numbers, we use asymptotic notation.
+---
 
-Big Oh Notation: At most, it will have X time complexity (upper bound).
-Big Omega Notation: At least, it will have X time complexity (lower bound).
-Big Theta Notation: It is the average case, something in between the upper and lower bounds.
+## ⏳ 2. Time Complexity
 
-What is time complexity? 
-Well, in simple words, it is the rate of increase in time with an increase in the size of input. It has no significance with the time you and I know; the same code on two different machines might end up taking different times. That is why we represent them in terms of Asymptotic notation.
+**Time Complexity** is the rate at which execution time increases with input size.
 
-Rules for analyzing time complexity:
+**Important Notes:**
+- It has no real-world time unit like seconds.
+- Two machines might give different runtimes for the same code, hence we use **Asymptotic Notation**.
 
-Always look for worst-case complexity.
-Ignore the constants.
-Ignore the smaller complexity.
-We will always use Big Oh notation because it represents the upper bound or worst-case scenarios. Examples explained in the lecture.
+### Rules for analyzing time complexity:
+1. Always analyze **worst-case** scenario.
+2. **Ignore constants** (e.g., O(2n) → O(n)).
+3. **Drop low-order terms** (e.g., O(n² + n) → O(n²)).
+4. In general, OuterLoop × InnerLoop = Total Complexity
+5. If input is divided, use logs:
+   - Divided by 2 → log base 2 → O(log₂n)
+   - Divided by 3 → log base 3 → O(log₃n)
+6. Function calls: Analyze each function's complexity individually and include them where they're called.
+7. Conditions and branches (`if/else`): Consider the **branch with higher complexity** for worst-case.
+8. Loops depending on input values (e.g., `while(i < n)` with `i *= 2`) → Usually log-based complexities.
 
-In general, OuterLoop * InnerLoop is used for analysis.
 
-If input is divided, we take log:
-If the input is divided by 2, then log base 2.
-If the input is divided by 3, then log base 3.
+---
 
-What is Space Complexity? It is Input + Auxiliary space. Auxiliary space is the space taken by your algorithm. You should avoid using unnecessary extra auxiliary space. A very important point here is that please do not tamper with the input unless it is given in the question. Just in case you have tampered with the input, make sure you convert it back to the original one before ending your logic, but avoid this otherwise you will be rejected in the interview.
+## 💾 3. Space Complexity
 
-The Big O cheatsheet by Eric is available at https://www.bigocheatsheet.com/.
+**Space Complexity** = Input + Auxiliary Space
+
+Auxiliary space is the **extra** memory used by the algorithm.
+
+💡 **Tips:**
+- Do **not** modify the input unless allowed.
+- If modified, revert it before the function ends.
+- Avoid unnecessary extra space to avoid rejections.
+
+---
+
+## 📋 4. Big-O Cheat Sheet
+
+| Name         | Big-O     | Example                  |
+|--------------|-----------|--------------------------|
+| Constant     | O(1)      | Accessing array element  |
+| Logarithmic  | O(log n)  | Binary Search            |
+| Linear       | O(n)      | Single loop              |
+| Linearithmic | O(n log n)| Merge/Quick Sort (avg)   |
+| Quadratic    | O(n²)     | Nested loops             |
+| Cubic        | O(n³)     | Triple nested loops      |
+| Exponential  | O(2ⁿ)     | Recursive Fibonacci      |
+| Factorial    | O(n!)     | Generating permutations  |
+
+📎 **Reference:** https://www.bigocheatsheet.com/
+
+---
+
+## 🧮 5. Asymptotic Notations
+
+Since we can’t express exact complexity, we use **asymptotic notation** (means: approaching a value).
+
+| Notation  | Meaning                    |
+|-----------|----------------------------|
+| **O**     | Upper bound (worst-case)   |
+| **Ω**     | Lower bound (best-case)    |
+| **Θ**     | Average case (tight bound) |
+
+---
+
+## 📈 6. How to Calculate Time Complexity
+
+### Step-by-step:
+1. Count operations inside loops
+2. Consider nested vs sequential loops
+3. Include recursion/method calls
+4. Apply rules for simplification
+
+### Examples:
+
+```java
+// O(n)
+for (int i = 0; i < n; i++) {
+    System.out.println(i);
+}
+```
+
+```java
+// O(n)
+for (int i = n-1; i >= 0; i++) {
+    System.out.println(i);
+}
+```
+
+```java
+// O(n) [n/5 -> n //avoid constant]
+for (int i = 0; i < n; i+=5) {
+    System.out.println(i);
+}
+```
+
+```java
+// O(n^2)
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        System.out.println(i + j);
+    }
+}
+```
+
+```java
+// O(n*m)
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+        System.out.println(i + j);
+    }
+}
+```
+
+```java
+// O(n^2) [sum of n natural number, n*(n+1)/2 -> n^2/2 + n/2 -> n^2 + n (after removing constants) -> n^2 (after removing high power polynomial)]
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < i; j++) {
+        System.out.println(i + j);
+    }
+}
+```
+
+```java
+// O(log n base 2)
+for (int i = 0; i < n; i*=2) {
+    System.out.println(i);
+}
+```
+
+```java
+// O(log n base 2)
+for (int i = n; i >= 1; i/=2) {
+    System.out.println(i);
+}
+```
+
+```java
+// O(sqRoot N)
+for (int i = 1; i*i < n; i++) {
+    System.out.println(i);
+}
+```
+
+```java
+// O(log log n base 2)
+for (int i = 1; i < n; i*=2) {
+    System.out.println(i);
+}
+
+for (int j = 1; j < k; j*=2) {
+    System.out.println(j);
+}
+```
+
+
+```java
+// O(log n base 2) [input is reduced to half]
+int binarySearch(int[] arr, int x) {
+    int l = 0, r = arr.length - 1;
+    while (l <= r) {
+        int m = (l + r) / 2;
+        if (arr[m] == x)
+            return m;
+        else if (arr[m] < x)
+            l = m + 1;
+        else
+            r = m - 1;
+    }
+    return -1;
+}
+```
+
+```java
+// O(n + m)
+for (int i = 0; i < n; i++) {
+    System.out.println(i);
+}
+
+for (int j = 0; j < m; j++) {
+    System.out.println(j);
+}
+```
+
+```java
+// O(n) [2n -> n //avoid constant]
+for (int i = 0; i < n; i++) {
+    System.out.println(i);
+}
+
+for (int j = 0; j < n; j++) {
+    System.out.println(j);
+}
+```
+
+---
+
+## 🚀 7. Algorithm Optimizations
+
+| Problem Type     | Naive           | Optimized         |
+|------------------|------------------|-------------------|
+| Pair Sum = X     | O(n²) loops     | O(n) HashMap      |
+| Max Subarray Sum | O(n²) brute     | O(n) Kadane’s     |
+
+### ✅ Optimization Tricks:
+- Avoid nested loops
+- Use Hashing for faster lookup
+- Replace recursion with iteration if deep
+- Use prefix sums, two pointers, or sliding windows
+- Use binary search for sorted input
+
+---
+
+## 🧑‍💻 Interview Tips
+
+- Clarify input size (n)
+- Start with brute force, then optimize
+- Always mention time & space trade-offs
+- Practice dry runs and complexity estimation
+
+---

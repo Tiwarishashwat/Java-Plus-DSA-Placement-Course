@@ -1,7 +1,7 @@
 
-# 🎓 Lecture: Time & Space Complexity for Coding Interviews
+# Lecture: Time & Space Complexity for Coding Interviews
 
-## 🧠 What You Will Learn
+## What You Will Learn
 - What algorithm complexity means in real-world terms  
 - How time and space complexity affect performance  
 - Practical Big-O notations and how to read them  
@@ -10,7 +10,7 @@
 
 ---
 
-## 📌 1. What is Algorithm Complexity?
+## 1. What is Algorithm Complexity?
 
 **Definition:**  
 Algorithm complexity refers to the **amount of resources** (time, space) an algorithm consumes as the input size grows.
@@ -30,7 +30,7 @@ Now you can see why time complexity is so important!
 
 ---
 
-## ⏳ 2. Time Complexity
+## 2. Time Complexity
 
 **Time Complexity** is the rate at which execution time increases with input size.
 
@@ -53,7 +53,7 @@ Now you can see why time complexity is so important!
 
 ---
 
-## 💾 3. Space Complexity
+## 3. Space Complexity
 
 **Space Complexity** = Input + Auxiliary Space
 
@@ -66,7 +66,7 @@ Auxiliary space is the **extra** memory used by the algorithm.
 
 ---
 
-## 📋 4. Big-O Cheat Sheet
+## 4. Big-O Cheat Sheet
 
 | Name         | Big-O     | Example                  |
 |--------------|-----------|--------------------------|
@@ -83,7 +83,7 @@ Auxiliary space is the **extra** memory used by the algorithm.
 
 ---
 
-## 🧮 5. Asymptotic Notations
+## 5. Asymptotic Notations
 
 Since we can’t express exact complexity, we use **asymptotic notation** (means: approaching a value).
 
@@ -95,7 +95,7 @@ Since we can’t express exact complexity, we use **asymptotic notation** (means
 
 ---
 
-## 📈 6. How to Calculate Time Complexity
+## 6. How to Calculate Time Complexity
 
 ### Step-by-step:
 1. Count operations inside loops
@@ -227,14 +227,7 @@ for (int j = 0; j < n; j++) {
 
 ---
 
-## 🚀 7. Algorithm Optimizations
-
-| Problem Type     | Naive           | Optimized         |
-|------------------|------------------|-------------------|
-| Pair Sum = X     | O(n²) loops     | O(n) HashMap      |
-| Max Subarray Sum | O(n²) brute     | O(n) Kadane’s     |
-
-### ✅ Optimization Tricks:
+### Optimization Tricks:
 - Avoid nested loops
 - Use Hashing for faster lookup
 - Replace recursion with iteration if deep
@@ -243,7 +236,7 @@ for (int j = 0; j < n; j++) {
 
 ---
 
-## 🧑‍💻 Interview Tips
+## Interview Tips
 
 - Clarify input size (n)
 - Start with brute force, then optimize

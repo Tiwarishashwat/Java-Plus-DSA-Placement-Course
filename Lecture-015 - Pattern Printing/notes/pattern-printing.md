@@ -16,7 +16,7 @@
 
 ---
 
-### Lecture 1: Intro to Pattern Printing
+### Intro to Pattern Printing
 
 **What You Will Learn:**
 - Why pattern printing is useful for logic building
@@ -25,7 +25,7 @@
 
 ---
 
-### Lecture 2: Solid Patterns (Basics)
+### Solid Patterns (Basics)
 
 #### Square Pattern
 ```
@@ -73,7 +73,7 @@ for (int i = 1; i <= 4; i++) {
 
 ---
 
-### Lecture 3: Number and Character Patterns
+### Number and Character Patterns
 
 #### Number Triangle
 ```
@@ -120,7 +120,7 @@ for (int i = 0; i < 3; i++) {
 
 ---
 
-### Lecture 4: Inverted and Mirrored Patterns
+### Inverted and Mirrored Patterns
 
 #### Inverted Triangle
 ```
@@ -171,7 +171,7 @@ for (int i = 1; i <= 4; i++) {
 
 ---
 
-### Lecture 5: Pyramid and Diamond Patterns
+### Pyramid and Diamond Patterns
 
 #### Centered Pyramid
 ```
@@ -240,7 +240,7 @@ for (int i = n - 1; i >= 1; i--) {
 
 ### Lecture 6: Advanced Number Patterns
 
-#### Pascal’s Triangle (Just Conceptual for Now)
+#### Pascal’s Triangle (assignment)
 
 #### Floyd’s Triangle
 ```
@@ -264,16 +264,6 @@ for (int i = 1; i <= 4; i++) {
 **What You Will Learn:**
 - Tracking a value across loops
 - Pattern logic with increasing sequence
-
----
-
-### Lecture 7: Debugging and Practice
-
-**What You Will Learn:**
-- Dry run errors
-- Identifying logic mistakes
-- How to build from broken code
-- Confidence in tracing nested loops
 
 ---
 

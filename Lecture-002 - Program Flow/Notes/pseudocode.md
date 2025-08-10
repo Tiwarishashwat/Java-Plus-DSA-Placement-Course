@@ -1,25 +1,19 @@
-1. Initialize a result = []
-2. Initialize a class = 1
-3. Initialize a section = 'A'
+1. Initialise ClassTopName = []
+2. Initialise ClassTopMarks = []
+3. Initialize class = 1
 4. While class is less than 13
-5.   Initialize a name, marks = []
-6.   while section is less than 'D'
-7. 	get name and marks of topper.
-8. 	go to next section.
-9.   store topper of 3 sections into result.
-10.  go to next class.
-11. Find the topper from the result.
- 
-
-
-
-
-
-
-
-
-
-
-			
-
-
+5. 		Initialise section = 'A'
+6. 		Initialise name=[], marks = []	
+7.		while section is less than 'D'
+8.			get Toppers
+9.			name.add(sectionTopperNames)
+10.		marks.add(sectionTopperMarks)
+11.			section -> next
+12.	get Toppers
+13.	classTopName.add(classTopperNames)
+14.	classTopMarks.add(classTopperMarks)
+15.	class -> next
+16. TopperNames = []
+17. get Toppers
+18. TopperNames.add(toppers)
+19. print topperNames

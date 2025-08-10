@@ -85,33 +85,3 @@ Bug will be gone but so will your job opportunity, lol!
 Single Line Comments ->
 Single-line comments start with two forward slashes (//).
 Multi-line comments start with /* and ends with */.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

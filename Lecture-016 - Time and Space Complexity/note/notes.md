@@ -113,8 +113,15 @@ for (int i = 0; i < n; i++) {
 ```
 
 ```java
-// O(n)
+// infinity
 for (int i = n-1; i >= 0; i++) {
+    System.out.println(i);
+}
+```
+
+```java
+// O(n)
+for (int i = n-1; i >= 0; i--) {
     System.out.println(i);
 }
 ```
@@ -154,8 +161,15 @@ for (int i = 0; i < n; i++) {
 ```
 
 ```java
-// O(log n base 2)
+// infinity
 for (int i = 0; i < n; i*=2) {
+    System.out.println(i);
+}
+```
+
+```java
+// O(log n base 2)
+for (int i = 1; i < n; i*=2) {
     System.out.println(i);
 }
 ```
@@ -244,3 +258,4 @@ for (int j = 0; j < n; j++) {
 - Practice dry runs and complexity estimation
 
 ---
+

@@ -36,6 +36,23 @@ Checked during runtime. **No compiler enforcement** to handle.
 
 >  All unchecked exceptions are subclasses of `RuntimeException`.
 
+Throwable
+ ├── Error                  (Serious problems, not handled)
+ │     └── OutOfMemoryError, StackOverflowError, ...
+ │
+ └── Exception              (Problems you can handle)
+       ├── RuntimeException (Unchecked exceptions)
+       │      ├── NullPointerException
+       │      ├── ArithmeticException
+       │      └── ...
+       │
+       └── [Other Exceptions] (Checked exceptions)
+              ├── IOException
+              ├── SQLException
+              ├── ClassNotFoundException
+              └── ...
+
+
 ---
 
 ### 2. **User-Defined Exceptions**

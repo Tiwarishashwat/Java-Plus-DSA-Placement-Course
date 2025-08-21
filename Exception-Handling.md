@@ -108,6 +108,28 @@ public void readFile() throws IOException, SQLException {
 }
 ```
 
+# `throw` vs `throws` in Java
+
+## Quick Comparison Table
+
+| Feature           | `throw` | `throws` |
+|-------------------|---------|----------|
+| **Usage**         | Inside method/block | In method signature |
+| **Purpose**       | Actually *throws* an exception | Declares potential exceptions (warning to caller) |
+| **Followed by**   | An exception **object** | One or more exception **classes** |
+| **Count**         | Can throw only **one** object at a time | Can declare **multiple** exception classes |
+| **Compiler Check**| No compile-time enforcement (just throws) | Compiler enforces handling of checked exceptions |
+| **Example**       | `throw new NullPointerException();` | `void readFile() throws IOException, SQLException` |
+
+---
+
+## Key Points
+- **`throw`** = Action → actually throws an exception object.  
+- **`throws`** = Declaration → warns/declares that a method *may* throw certain exceptions.  
+- For **checked exceptions**: Compiler forces you to either handle with try-catch or declare with `throws`.  
+- For **unchecked exceptions** (subclasses of RuntimeException): `throws` is optional (compiler doesn’t enforce).  
+
+
 ---
 
 ##  Java 7+ Enhancements

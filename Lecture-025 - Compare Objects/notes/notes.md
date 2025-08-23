@@ -33,6 +33,13 @@ Return values of compareTo()
 
 - Negative (< 0) → Current object is smaller.
 
+Quick trick:
+- If result < 0 → keep as is.
+
+- If result > 0 → swap elements.
+
+- If result = 0 → consider equal (no swap).
+
 Example: Sorting Students by Roll Number
 
 ```java

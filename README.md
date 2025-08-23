@@ -6,22 +6,25 @@ https://youtube.com/playlist?list=PLQ7ZAf76c0ZPVdhV1bAjFv0bQc1xHURzE
 ## Syllabus
 1. Java Basics
 2. Arrays & Strings
-3. Pattern Printing
-4. Time & Space Complexity
-5. Maths for DSA
-6. Bit Manipulation
-7. Searching
-8. Sorting
-9. Recursion
-10. Recursion Time Complexity
-11. Backtracking
-12. Stack & Queue
-13. Hashing
-14. Sliding Window & Two Pointer
-15. Linked List
-16. Trees (BT/BST)
-17. Graphs
-18. Dynamic Programming
-19. Greedy
-20. Tries
+3. Object Oriented Programming
+4. Exception Handling
+5. Java 8 Features
+6. Pattern Printing
+7. Time & Space Complexity
+8. Maths for DSA
+9. Bit Manipulation
+10. Searching
+11. Sorting
+12. Recursion
+13. Recursion Time Complexity
+14. Backtracking
+15. Stack & Queue
+16. Hashing
+17. Sliding Window & Two Pointer
+18. Linked List
+19. Trees (BT/BST)
+20. Graphs
+21. Dynamic Programming
+22. Greedy
+23. Tries
 

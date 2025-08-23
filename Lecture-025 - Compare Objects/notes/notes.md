@@ -200,9 +200,9 @@ trick to avoid <  or > symbols..
 
 - compareTo(first, second)
   
-- for decreasing order sorting -> return second - first
+- for decreasing order sorting -> return (second - first)
   
-- for increasing order sorting -> first - second
+- for increasing order sorting -> return (first - second)
 
 ### Example: Sort Students by marks (Descending)
 

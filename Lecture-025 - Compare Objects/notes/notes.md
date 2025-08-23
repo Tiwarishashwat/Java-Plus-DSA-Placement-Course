@@ -162,7 +162,71 @@ public class ComparatorAnonymousDemo {
     }
 }
 ```
-we can use lambda to further minimize the comparator code, that we would learn in Java 8 special features soon!
+## Lambda Expressions in Java (Introduced in Java 8)
+
+A lambda expression is a short block of code that takes in parameters and returns a value.
+
+It provides a clear and concise way to represent an implementation of a functional interface (an interface with a single abstract method, e.g., Comparator, Runnable).
+
+Instead of creating an anonymous inner class, you can write the implementation in a lambda form.
+Syntax:
+(parameter1, parameter2, ...) -> { body of the method }
+- left side → parameters
+- Arrow -> → separates parameters and body
+- Right side → body (expression or block of code)
+
+Example: Comparator using Lambda
+code with anonymous class:
+```java
+Collections.sort(list, new Comparator<Student>() {
+    @Override
+    public int compare(Student s1, Student s2) {
+        return s2.rollNo - s1.rollNo; // descending
+    }
+});
+```
+code with lambda
+```java
+Collections.sort(list, (s1, s2) -> s2.rollNo - s1.rollNo);
+```
+Full Code with lambda:
+
+```java
+import java.util.*;
+
+class Student {
+    int rollNo;
+    String name;
+
+    Student(int rollNo, String name) {
+        this.rollNo = rollNo;
+        this.name = name;
+    }
+}
+
+public class ComparatorLambdaDemo {
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>();
+        list.add(new Student(3, "Amit"));
+        list.add(new Student(1, "Ravi"));
+        list.add(new Student(2, "Neha"));
+
+        // Using Comparator with Lambda
+        Collections.sort(list, (s1, s2) -> s2.rollNo - s1.rollNo);
+
+        for (Student s : list) {
+            System.out.println(s.rollNo + " " + s.name);
+        }
+    }
+}
+```
+```
+Output:
+    3 Amit
+    2 Neha
+    1 Ravi
+```
+
 ---
 
 ## When to Use?

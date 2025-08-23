@@ -176,6 +176,7 @@ A lambda expression is a short block of code that takes in parameters and return
 It provides a clear and concise way to represent an implementation of a functional interface (an interface with a single abstract method, e.g., Comparator, Runnable).
 
 Instead of creating an anonymous inner class, you can write the implementation in a lambda form.
+
 Syntax:
 (parameter1, parameter2, ...) -> { body of the method }
 - left side → parameters
@@ -183,6 +184,7 @@ Syntax:
 - Right side → body (expression or block of code)
 
 Example: Comparator using Lambda
+
 code with anonymous class:
 ```java
 Collections.sort(list, new Comparator<Student>() {

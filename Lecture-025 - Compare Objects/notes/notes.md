@@ -40,40 +40,49 @@ Quick trick:
 
 - If result = 0 → consider equal (no swap).
 
-Example: Sorting Students by Roll Number
+Example: Sorting Students by increasing order of Roll Number
 
 ```java
+import java.util.*;
 class Student implements Comparable<Student> {
     int rollNo;
     String name;
-
-    Student(int rollNo, String name) {
+    int marks;
+    Student(int rollNo, String name, int marks) {
         this.rollNo = rollNo;
         this.name = name;
+        this.marks = marks;
     }
-
+    //neg -> no swap
+    //pos -> swap
+    //zero -> objects are equal
+//    [A, B, C]
     @Override
-    public int compareTo(Student s) {
-        return this.rollNo - s.rollNo; // natural ordering by roll number
+    public int compareTo(Student that){
+//        this , that
+        if(this.rollNo < that.rollNo){
+            return -100; //no swap req
+        }else{
+            return 1; //swap
+        }
     }
-}
 
-import java.util.*;
+}
 
 public class ComparableDemo {
     public static void main(String[] args) {
         List<Student> list = new ArrayList<>();
-        list.add(new Student(3, "Amit"));
-        list.add(new Student(1, "Ravi"));
-        list.add(new Student(2, "Neha"));
+        list.add(new Student(3, "Amit",50));
+        list.add(new Student(1, "Ravi",70));
+        list.add(new Student(2, "Neha",80));
 
-        Collections.sort(list); // uses compareTo
-
+        Collections.sort(list);
         for (Student s : list) {
             System.out.println(s.rollNo + " " + s.name);
         }
     }
 }
+
 
 ```
 ---
@@ -93,7 +102,7 @@ public interface Comparator<T> {
 
 ```
 
-Example: sorting students by name
+Example: sorting students by decreasing order of marks
 
 ```java
 import java.util.*;
@@ -101,39 +110,48 @@ import java.util.*;
 class Student {
     int rollNo;
     String name;
+    int marks;
 
-    Student(int rollNo, String name) {
+    Student(int rollNo, String name, int marks) {
         this.rollNo = rollNo;
         this.name = name;
+        this.marks = marks;
     }
 }
 
-class NameComparator implements Comparator<Student> {
+class MyCustomComparator implements Comparator<Student>{
+    // decreasing
     @Override
-    public int compare(Student s1, Student s2) {
-        return s1.name.compareTo(s2.name); // compare names alphabetically
-    }
-}
-
-public class ComparatorDemo {
-    public static void main(String[] args) {
-        List<Student> list = new ArrayList<>();
-        list.add(new Student(3, "Amit"));
-        list.add(new Student(1, "Ravi"));
-        list.add(new Student(2, "Neha"));
-
-        Collections.sort(list, new NameComparator());
-
-        for (Student s : list) {
-            System.out.println(s.rollNo + " " + s.name);
+    public int compare(Student s1, Student s2){
+        if(s1.marks < s2.marks){
+            return 1;
+        }else{
+            return -1;
         }
     }
 }
 
+
+public class ComparatorDemo {
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>();
+            list.add(new Student(3, "Amit",50));
+            list.add(new Student(1, "Ravi",70));
+            list.add(new Student(2, "Neha",80));
+
+            Collections.sort(list, new MyCustomComparator());
+
+        for (Student s : list) {
+            System.out.println(s.marks + " " + s.name);
+        }
+    }
+}
+
+
 ```
 Instead of creating a separate class that implements `Comparator`, we can use an **anonymous inner class** directly at the point of sorting.
 
-### Example: Sort Students by Roll Number (Descending)
+### Example: Sort Students by marks (Descending)
 
 ```java
 import java.util.*;
@@ -141,34 +159,146 @@ import java.util.*;
 class Student {
     int rollNo;
     String name;
+    int marks;
 
-    Student(int rollNo, String name) {
+    Student(int rollNo, String name, int marks) {
         this.rollNo = rollNo;
         this.name = name;
+        this.marks = marks;
     }
 }
 
 public class ComparatorAnonymousDemo {
     public static void main(String[] args) {
         List<Student> list = new ArrayList<>();
-        list.add(new Student(3, "Amit"));
-        list.add(new Student(1, "Ravi"));
-        list.add(new Student(2, "Neha"));
+        list.add(new Student(3, "Amit",50));
+        list.add(new Student(1, "Ravi",70));
+        list.add(new Student(2, "Neha",80));
+
 
         // Using Comparator with Anonymous Class
-        Collections.sort(list, new Comparator<Student>() {
+        Collections.sort(list, new Comparator<Student>(){
             @Override
-            public int compare(Student s1, Student s2) {
-                return s2.rollNo - s1.rollNo; // descending by roll number
+            public int compare(Student s1, Student s2){
+                if(s1.marks < s2.marks){
+                    return 1;
+                }else{
+                    return -1;
+                }
             }
+
         });
 
         for (Student s : list) {
-            System.out.println(s.rollNo + " " + s.name);
+            System.out.println(s.marks + " " + s.name);
         }
     }
 }
 ```
+
+trick to avoid <  or > symbols..
+
+- compareTo(first, second)
+  
+- for decreasing order sorting -> return second - first
+  
+- for increasing order sorting -> first - second
+
+### Example: Sort Students by marks (Descending)
+
+```java
+import java.util.*;
+
+class Student {
+    int rollNo;
+    String name;
+    int marks;
+
+    Student(int rollNo, String name, int marks) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.marks = marks;
+    }
+}
+
+public class ComparatorTrickDemo {
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>();
+        list.add(new Student(3, "Amit",50));
+        list.add(new Student(1, "Ravi",70));
+        list.add(new Student(2, "Neha",80));
+        list.add(new Student(4, "Priya",80));
+
+        //(first, second)
+        // dec -> second - first
+        //inc -> first - second
+        // Using Comparator with Anonymous Class
+        Collections.sort(list, new Comparator<Student>(){
+            @Override
+            public int compare(Student s1, Student s2){
+                
+               return s2.marks - s1.marks;
+
+            }
+        });
+
+        for (Student s : list) {
+            System.out.println(s.marks + " " + s.name);
+        }
+    }
+}
+
+```
+### Example: Sort Students by marks (Descending) and if marks is same then sort in increasing order of roll number.
+```java
+import java.util.*;
+
+class Student {
+    int rollNo;
+    String name;
+    int marks;
+
+    Student(int rollNo, String name, int marks) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.marks = marks;
+    }
+}
+
+public class ComparatorTrickDemo {
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>();
+        list.add(new Student(3, "Amit",50));
+        list.add(new Student(1, "Ravi",70));
+        list.add(new Student(2, "Neha",80));
+        list.add(new Student(4, "Priya",80));
+
+        //(first, second)
+        // dec -> second - first
+        //inc -> first - second
+        // Using Comparator with Anonymous Class
+        Collections.sort(list, new Comparator<Student>(){
+            @Override
+            public int compare(Student s1, Student s2){
+                // cond -> sort in dec order of marks.
+                // if marks is same then sort in increasing order of rollNo.
+                if(s1.marks == s2.marks){
+                    return s1.rollNo - s2.rollNo;
+                }
+
+               return s2.marks - s1.marks;
+
+            }
+        });
+
+        for (Student s : list) {
+            System.out.println(s.marks + " " + s.name);
+        }
+    }
+}
+
+```
+
 ## Lambda Expressions in Java (Introduced in Java 8)
 
 A lambda expression is a short block of code that takes in parameters and returns a value.
@@ -190,15 +320,15 @@ code with anonymous class:
 Collections.sort(list, new Comparator<Student>() {
     @Override
     public int compare(Student s1, Student s2) {
-        return s2.rollNo - s1.rollNo; // descending
+        return s2.marks - s1.marks; // descending
     }
 });
 ```
 code with lambda
 ```java
-Collections.sort(list, (s1, s2) -> s2.rollNo - s1.rollNo);
+Collections.sort(list, (s1, s2) -> s2.marks - s1.marks);
 ```
-Full Code with lambda:
+Full Code with lambda: (decreasing order of marks)
 
 ```java
 import java.util.*;
@@ -206,34 +336,83 @@ import java.util.*;
 class Student {
     int rollNo;
     String name;
+    int marks;
 
-    Student(int rollNo, String name) {
+    Student(int rollNo, String name, int marks) {
         this.rollNo = rollNo;
         this.name = name;
+        this.marks = marks;
     }
 }
 
 public class ComparatorLambdaDemo {
     public static void main(String[] args) {
         List<Student> list = new ArrayList<>();
-        list.add(new Student(3, "Amit"));
-        list.add(new Student(1, "Ravi"));
-        list.add(new Student(2, "Neha"));
+        list.add(new Student(3, "Amit",50));
+        list.add(new Student(1, "Ravi",70));
+        list.add(new Student(2, "Neha",80));
+        list.add(new Student(4, "Priya",80));
 
-        // Using Comparator with Lambda
-        Collections.sort(list, (s1, s2) -> s2.rollNo - s1.rollNo);
+        //(first, second)
+        // dec -> second - first
+        //inc -> first - second
+        // Using Comparator with Lambda expression
+
+        Collections.sort(list, (s1,s2) ->  s2.marks - s1.marks);
+
 
         for (Student s : list) {
-            System.out.println(s.rollNo + " " + s.name);
+            System.out.println(s.marks + " " + s.name);
         }
     }
 }
+
+
 ```
-```
-Output:
-    3 Amit
-    2 Neha
-    1 Ravi
+Full Code with lambda: (decreasing order of marks and if marks are same then increasing order of roll no.)
+
+```java
+import java.util.*;
+
+class Student {
+    int rollNo;
+    String name;
+    int marks;
+
+    Student(int rollNo, String name, int marks) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.marks = marks;
+    }
+}
+
+public class ComparatorLambdaDemo {
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>();
+        list.add(new Student(3, "Amit",50));
+        list.add(new Student(1, "Ravi",70));
+        list.add(new Student(2, "Neha",80));
+        list.add(new Student(4, "Priya",80));
+
+        //(first, second)
+        // dec -> second - first
+        //inc -> first - second
+        // Using Comparator with Lambda expression
+
+        // cond -> sort in dec order of marks.
+        // if marks is same then sort in increasing order of rollNo.
+        Collections.sort(list, (s1,s2) -> {
+            if(s1.marks == s2.marks){
+                return s1.rollNo - s2.rollNo;
+            }
+            return s2.marks - s1.marks;
+        });
+        for (Student s : list) {
+            System.out.println(s.marks + " " + s.name);
+        }
+    }
+}
+
 ```
 
 ---

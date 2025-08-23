@@ -159,6 +159,6 @@ try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
 
 | Type              | Inherits   | Meant to be Handled? | Checked? |
 |-------------------|------------|-----------------------|----------|
-| Error              | Throwable | ❌ No                 | ❌ No     |
-| Exception          | Throwable | ✅ Yes                | ✅ Yes (except RuntimeException) |
-| RuntimeException   | Exception | ✅ Yes                | ❌ No     |
+| Error              | Throwable |  No                 |  No     |
+| Exception          | Throwable |  Yes                |  Yes (except RuntimeException) |
+| RuntimeException   | Exception |  Yes                |  No     |

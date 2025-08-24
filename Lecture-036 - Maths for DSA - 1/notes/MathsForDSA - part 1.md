@@ -155,7 +155,7 @@ newNum = 4 * 100 + 23 = 423
 
 ---
 
-### 🔍 Even or Odd Check
+### Even or Odd Check
 if a number is even then it is divisible by 2.
 ```java
 boolean isEven(int n) {

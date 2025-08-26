@@ -2,6 +2,17 @@
 
 ---
 
+### Even or Odd Check
+if a number is even then it is divisible by 2.
+```java
+boolean isEven(int n) {
+    return (n % 2) == 0;
+}
+```
+**Time Complexity**: O(1)
+
+---
+
 ### Digit Extraction and Manipulation
 
 #### Extract & Reduce Digits
@@ -60,6 +71,33 @@ Then we add the digit at the front.
 oldNum = 23, digit = 4
 newNum = 4 * 100 + 23 = 423
 ```
+---
+### Reverse a Number
+Reversing a number means rearranging its digits in the opposite order. For example, reversing 1234 gives 4321.
+We extract digits from the end of the number one by one using % 10, and build the reversed number by multiplying the result by 10 and adding the extracted digit.
+
+```java
+int reverse(int n) {
+    int rev = 0;
+    while(n > 0) {
+        rev = rev * 10 + n % 10; // Add last digit to reversed number
+        n /= 10; // Remove last digit from original number
+    }
+    return rev;
+}
+```
+Example:
+Let’s reverse 123:
+
+Step	n	rev
+1	123	0×10 + 3 = 3
+2	12	3×10 + 2 = 32
+3	1	32×10 + 1 = 321
+
+Final result: 321
+
+**Time Complexity**: O(log₁₀n)
+
 ---
 
 ### Number System
@@ -156,45 +194,6 @@ String convertFromDecimal(int num, int base) {
 
 ---
 
-### Even or Odd Check
-if a number is even then it is divisible by 2.
-```java
-boolean isEven(int n) {
-    return (n % 2) == 0;
-}
-```
-**Time Complexity**: O(1)
-
----
-
-### Reverse a Number
-Reversing a number means rearranging its digits in the opposite order. For example, reversing 1234 gives 4321.
-We extract digits from the end of the number one by one using % 10, and build the reversed number by multiplying the result by 10 and adding the extracted digit.
-
-```java
-int reverse(int n) {
-    int rev = 0;
-    while(n > 0) {
-        rev = rev * 10 + n % 10; // Add last digit to reversed number
-        n /= 10; // Remove last digit from original number
-    }
-    return rev;
-}
-```
-Example:
-Let’s reverse 123:
-
-Step	n	rev
-1	123	0×10 + 3 = 3
-2	12	3×10 + 2 = 32
-3	1	32×10 + 1 = 321
-
-✔ Final result: 321
-
-**Time Complexity**: O(log₁₀n)
-
----
-
 ### Power of a Number (Normal)
 ```java
 int power(int a, int b) {
@@ -248,4 +247,5 @@ int fastPower(int a, int b) {
 **Time Complexity**: O(log b)
 
 ---
+
 

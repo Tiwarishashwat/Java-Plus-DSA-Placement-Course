@@ -1,5 +1,67 @@
 ## Maths for DSA Part 1 – Number Systems & Basics
 
+---
+
+### Digit Extraction and Manipulation
+
+#### Extract & Reduce Digits
+To process each digit of a number (from last to first), we use:
+
+% 10 to extract the last digit.
+/ 10 to remove the last digit.
+
+```java
+while(num > 0) {
+    int digit = num % 10;  // Extract last digit
+    System.out.print(digit + " ")
+    num /= 10; // Remove last digit
+}
+```
+This is useful for problems like:
+
+1. Reversing a number
+
+2. Checking for palindrome
+
+3. Summing digits
+
+4. Armstrong number
+
+**Time Complexity**: O(log₁₀n)
+
+#### Form number by appending digit at end
+To add a digit at the end (right side) of a number.
+For example:
+If oldNum = 42 and digit = 5, then
+newNum = 42 * 10 + 5 = 425
+
+This is often used in building numbers from digit arrays or reversing digits.
+
+```java
+int newNum = oldNum * 10 + digit;
+```
+
+#### Form number by adding digit at front
+To add a digit at the front (left side) of a number.
+
+```java
+int newNum = digit * (int)Math.pow(10, (int)Math.log10(oldNum)+1) + oldNum;
+```
+
+Explanation:
+
+Math.log10(oldNum) gives the number of digits minus one.
+
+So we calculate 10^(number of digits) to shift the old number.
+
+Then we add the digit at the front.
+
+```java
+oldNum = 23, digit = 4
+newNum = 4 * 100 + 23 = 423
+```
+---
+
 ### Number System
 **Definition**: Represents values using digits or symbols in a consistent manner (e.g., binary, decimal, hexadecimal).
 
@@ -82,67 +144,6 @@ String convertFromDecimal(int num, int base) {
 }
 ```
 **Time Complexity**: O(logₙ base)
-
----
-
-### Digit Extraction and Manipulation
-
-#### Extract & Reduce Digits
-To process each digit of a number (from last to first), we use:
-
-% 10 to extract the last digit.
-/ 10 to remove the last digit.
-
-```java
-while(num > 0) {
-    int digit = num % 10;  // Extract last digit
-    System.out.print(digit + " ")
-    num /= 10; // Remove last digit
-}
-```
-This is useful for problems like:
-
-1. Reversing a number
-
-2. Checking for palindrome
-
-3. Summing digits
-
-4. Armstrong number
-
-**Time Complexity**: O(log₁₀n)
-
-#### Form number by appending digit at end
-To add a digit at the end (right side) of a number.
-For example:
-If oldNum = 42 and digit = 5, then
-newNum = 42 * 10 + 5 = 425
-
-This is often used in building numbers from digit arrays or reversing digits.
-
-```java
-int newNum = oldNum * 10 + digit;
-```
-
-#### Form number by adding digit at front
-To add a digit at the front (left side) of a number.
-
-```java
-int newNum = digit * (int)Math.pow(10, (int)Math.log10(oldNum)+1) + oldNum;
-```
-
-Explanation:
-
-Math.log10(oldNum) gives the number of digits minus one.
-
-So we calculate 10^(number of digits) to shift the old number.
-
-Then we add the digit at the front.
-
-```java
-oldNum = 23, digit = 4
-newNum = 4 * 100 + 23 = 423
-```
 
 ---
 
@@ -247,3 +248,4 @@ int fastPower(int a, int b) {
 **Time Complexity**: O(log b)
 
 ---
+

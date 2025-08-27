@@ -71,6 +71,31 @@ Then we add the digit at the front.
 oldNum = 23, digit = 4
 newNum = 4 * 100 + 23 = 423
 ```
+
+## Count Digits
+
+### Method 1: Basic Loop
+```java
+// Count digits by dividing the number by 10 until it becomes 0
+int countDigits(int n) {
+    int count = 0;
+    while(n > 0) {
+        count++;
+        n /= 10;
+    }
+    return count;
+}
+```
+**Explanation**: Each division by 10 reduces one digit. This runs in O(log₁₀n) time.
+
+### Method 2: Using Log
+```java
+int count = (int)Math.log10(n) + 1;
+```
+**Explanation**: log₁₀(n) gives the number of digits minus 1.
+
+---
+
 ---
 ### Reverse a Number
 Reversing a number means rearranging its digits in the opposite order. For example, reversing 1234 gives 4321.
@@ -247,5 +272,6 @@ int fastPower(int a, int b) {
 **Time Complexity**: O(log b)
 
 ---
+
 
 

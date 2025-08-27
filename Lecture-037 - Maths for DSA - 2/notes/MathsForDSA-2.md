@@ -1,30 +1,6 @@
 
 # Maths for DSA – Part 2
 
-## Count Digits
-
-### Method 1: Basic Loop
-```java
-// Count digits by dividing the number by 10 until it becomes 0
-int countDigits(int n) {
-    int count = 0;
-    while(n > 0) {
-        count++;
-        n /= 10;
-    }
-    return count;
-}
-```
-**Explanation**: Each division by 10 reduces one digit. This runs in O(log₁₀n) time.
-
-### Method 2: Using Log
-```java
-int count = (int)Math.log10(n) + 1;
-```
-**Explanation**: log₁₀(n) gives the number of digits minus 1.
-
----
-
 ## Armstrong Number
 
 **Definition**: A number is Armstrong if the sum of its digits raised to the number of digits equals the number.
@@ -395,4 +371,5 @@ Both functions return a double, so we cast it to int to get an integer.
 Question:
 Can you calculate floor and ceil without using Math.ceil or Math.floor ?
 ---
+
 

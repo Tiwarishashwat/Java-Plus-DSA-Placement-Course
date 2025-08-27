@@ -96,7 +96,7 @@ int count = (int)Math.log10(n) + 1;
 
 ---
 
----
+
 ### Reverse a Number
 Reversing a number means rearranging its digits in the opposite order. For example, reversing 1234 gives 4321.
 We extract digits from the end of the number one by one using % 10, and build the reversed number by multiplying the result by 10 and adding the extracted digit.
@@ -272,6 +272,7 @@ int fastPower(int a, int b) {
 **Time Complexity**: O(log b)
 
 ---
+
 
 
 

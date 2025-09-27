@@ -9,16 +9,18 @@
 153 → 1³ + 5³ + 3³ = 153
 
 ```java
-boolean isArmstrong(int n) {
-    int temp = n, sum = 0;
-    int digits = (int)Math.log10(n) + 1;
-    while(n > 0) {
-        int digit = n % 10;
-        sum += Math.pow(digit, digits);
-        n /= 10;
+    public boolean isArmstrong(int num){
+        if(num<0) return false;
+       int res =0;
+       int copy = num;
+       int digits = (int)Math.log10(num) + 1;
+       while(num>0){
+           int digit = num % 10;
+           res = res + (int)Math.pow(digit,digits);
+           num = num / 10;
+       }
+       return (copy == res);
     }
-    return sum == temp;
-}
 ```
 
 ---
@@ -41,14 +43,17 @@ boolean isPalindrome(int n) {
 
 ```java
 // Efficiently print all divisors of n using square root logic
-void printDivisors(int n) {
-    for(int i = 1; i <= Math.sqrt(n); i++) {
-        if(n % i == 0) {
-            System.out.print(i + " ");
-            if(i != n/i) System.out.print(n/i + " ");
+    public void printDivisors(int num){
+        int sqrt = (int)Math.sqrt(num);
+        for(int i=1;i<=sqrt;i++){
+            if(num%i==0){
+                System.out.print(i + " ");
+                if(num/i != i){
+                    System.out.print(num/i + " ");
+                }
+            }
         }
     }
-}
 ```
 
 - Every divisor of a number n comes in a pair (i, n/i) — and one of the numbers in each pair is always ≤ √n
@@ -73,13 +78,18 @@ If n has any divisor other than 1 and itself, one of them must be ≤ √n.
 
 ```java
 // Check if a number is prime using 2 to √n
-boolean isPrime(int n) {
-    if(n <= 1) return false;
-    for(int i = 2; i*i <= n; i++) {
-        if(n % i == 0) return false;
+    public boolean isPrime(int num){
+        if(num<2){
+            return false;
+        }
+        int sqrt = (int)Math.sqrt(num);
+        for(int i=2;i<=sqrt;i++){
+            if(num % i ==0){
+                return false;
+            }
+        }
+        return true;
     }
-    return true;
-}
 ```
 
 ---
@@ -125,19 +135,29 @@ After the loop, the indices with true are your primes.
 ```
 
 ```java
-boolean[] sieve(int n) {
-    boolean[] prime = new boolean[n+1];
-    Arrays.fill(prime, true);
-    prime[0] = prime[1] = false;
-
-    for(int i = 2; i*i <= n; i++) {
-        if(prime[i]) {
-            for(int j = i*i; j <= n; j += i)
-                prime[j] = false;
+public void printPrimes(int num){
+        boolean arr[] = new boolean[num+1];
+        Arrays.fill(arr,true);
+        arr[0] = false;
+        arr[1] = false;
+        int sqrt = (int)Math.sqrt(num);
+//
+        for(int i=2;i<=sqrt;i++){
+            if(arr[i]){
+                //num/i
+                for(int j=i*i;j<=num;j=j+i){
+                    arr[j] = false;
+                }
+            }
         }
+
+        for(int i=2;i<=num;i++){
+            if(arr[i]){
+                System.out.print(i + " ");
+            }
+        }
+
     }
-    return prime;
-}
 ```
 **Time Complexity**: O(n log log n)
 
@@ -149,7 +169,34 @@ boolean[] sieve(int n) {
 
 The Greatest Common Divisor (GCD) of two numbers is the largest number that divides both without leaving a remainder.
 
+```java
+    private int findGcd(int a, int b){
+        a = Math.abs(a);
+        b = Math.abs(b);
+//        cases for handling zero:
+        if(a==0 && b==0) return 0;
+        if(a==0) return b;
+        if(b==0) return a;
+
+        int min = Math.min(a,b);
+        int res=1;
+        for(int i=2;i<=min;i++){
+            if(a%i==0 && b%i==0){
+                res = i;
+            }
+        }
+        return res;
+    }
+```
+
 Euclidean Algorithm Logic:
+```
+gcd(a, b) = gcd(a-b, b) // note a<=b
+```
+
+efficient way is
+
+
 ```
 gcd(a, b) = gcd(b, a % b)
 ```
@@ -176,9 +223,20 @@ Thus, GCD doesn’t change — it just gets simpler!
 ```
 
 ```java
-int gcd(int a, int b) {
-    return b == 0 ? a : gcd(b, a % b);
-}
+    private int findGcd(int a, int b){
+        a = Math.abs(a);
+        b = Math.abs(b);
+        if(b>a){
+            return findGcd(b,a);
+        }
+//        log(min(a,b))
+        while(b>0){
+            int temp = a%b;
+            a = b;
+            b = temp;
+        }
+        return a;
+    }
 ```
 **Time Complexity**: O(log(min(a, b)))
 
@@ -204,83 +262,87 @@ int lcm(int a, int b) {
 
 ---
 
-## Modular Arithmetic
-
-### Rules
-- (a + b) % m = (a % m + b % m) % m
-- (a - b) % m = (a % m - b % m + m) % m
-- (a * b) % m = (a % m * b % m) % m
-
----
-
-## Fast Modular Exponentiation
-
-You want to calculate: a^b % mod
-
-But directly multiplying a b times is very slow for large b.
-So we use exponentiation by squaring — a smart trick to make it fast (O(log b)).
-
-Instead of doing:
-```
-res = a * a * a * ... * a  (b times)
-```
-
-We break b into powers of 2 using its binary representation.
-```
-Let’s say: b = 13  → binary = 1101
-
-a^13 = a^8 * a^4 * a^1
-```
-Only multiply the powers where the binary bit is 1.
-6^13 mod 100
+finding unique prime factors of a number
 
 ```java
-int modPower(int a, int b, int mod) {
-    int res = 1;
-    a %= mod;
-    while(b > 0) {
-        if((b & 1) == 1) res = (res * a) % mod;  // if b is odd
-        a = (a * a) % mod;
-        b = b / 2
+    private ArrayList<Integer> findUniquePrimeFactors(int num){
+        ArrayList<Integer> res = new ArrayList<>();
+        for(int i=2;i<=Math.sqrt(num);i++){
+            if(num%i==0){
+                res.add(i);
+                while(num%i==0){
+                    num = num / i;
+                }
+            }
+        }
+        if(num>1){
+            res.add(num);
+        }
+        return res;
     }
-    return res;
-}
-```
-Let’s say: a = 3, b = 5, mod = 100
-
-Binary of 5 = 101
 
 ```
-Step 1: res = 1, a = 3
-b = 5 → last bit = 1 → res = 1 × 3 = 3, then a = 3² = 9, b = 2
+find all prime factors of a number
 
-Step 2: b = 2 → last bit = 0 → skip multiply, a = 9² = 81, b = 1
-
-Step 3: b = 1 → last bit = 1 → res = 3 × 81 = 243, b = 0
-
-Final res = 243 % 100 = 43
-So 3^5 % 100 = 43
+```java
+    private ArrayList<Integer> findAllPrimeFactors(int num){
+        ArrayList<Integer> res = new ArrayList<>();
+        for(int i=2;i<=Math.sqrt(num);i++){
+            while(num%i==0){
+                res.add(i);
+                num = num / i;
+            }
+        }
+        if(num>1){
+            res.add(num);
+        }
+        return res;
+    }
 ```
-
-**Time Complexity**: O(log b)
 
 ---
+find all Smallest Prime Factor (SPF) till num
 
-## Factorial
+```java
+private ArrayList<Integer> findAllSPF(int num){
+        ArrayList<Integer> res = new ArrayList<>();
+        int prime[] = new int[num+1];
+        for(int i=2;i<=num;i++){
+            prime[i] = i;
+        }
+        int sqrt = (int)Math.sqrt(num);
+        for(int i=2;i<=sqrt;i++){
+            if(prime[i]==i){
+                for(int j=i*i;j<=num;j=j+i){
+                    if(prime[j] == j){
+                        prime[j] = i;
+                    }
+                }
+            }
+        }
+        for(int i=2;i<=num;i++){
+            res.add(prime[i]);
+        }
+        return res;
+    }
+```
+---
+Find factorial of a number
+
 ```
 n! = n × (n-1) × (n-2) × ... × 2 × 1
 ```
 
 ```java
-int fact(int n) {
-    int res = 1;
-    for(int i = 2; i <= n; i++) res *= i;
-    return res;
-}
+    private void printFactorial(int num){
+        int res=1;
+        for(int i=num;i>=2;i--){
+            res = res * i;
+        }
+        System.out.println(res);
+    }
 ```
-
 ---
-
 ## Trailing Zeros in Factorial
 
 A trailing zero is a 0 at the end of a number.
@@ -295,64 +357,31 @@ Only pair of 2 and 5 forms a trailing zero.
 Since there are always more 2s than 5s in prime factors of a factorial, count number of 5s.
 
 ```java
-int trailingZeros(int n) {
-    int count = 0;
-    for(int i = 5; n / i >= 1; i *= 5)
-        count += n / i;
-    return count;
-}
+    public int trailingZeroes(int n) {
+        int res=0;
+        int i=5;
+        while(i<=n){
+            res = res + n/i;
+            i = i * 5;
+        }
+        return res;
+    }
 ```
-**Time Complexity**: O(log₅n)
+
+
+
+
+---
+## Modular Arithmetic
+
+### Rules
+- (a + b) % m = (a % m + b % m) % m
+- (a - b) % m = (a % m - b % m + m) % m
+- (a * b) % m = (a % m * b % m) % m
 
 ---
 
-## Newton Raphson Square Root
-
-Find the square root of a number x without using Math.sqrt()
-We want to approximate the square root using math.
-
-We want to solve this equation:
-guess² = x
-
-But instead of guessing randomly, we improve the guess step by step using:
-newGuess = (guess + x / guess) / 2;
-
-This formula moves your guess closer and closer to the real square root.
-This is called the Newton-Raphson method, a powerful numerical technique for solving equations.
-
-```java
-double sqrt(double x) {
-    double guess = x;
-    double epsilon = 1e-6;
-    while(Math.abs(guess * guess - x) > epsilon) {
-        guess = (guess + x / guess) / 2;
-    }
-    return guess;
-}
-```
-
-epsilon is a tiny number like 0.000001 — it defines how accurate your result should be.
-
-**Explanation**: Uses iterative approximation. Each step gets closer to real sqrt.
-
-```java
-Example:
-Suppose x = 9
-
-Start with guess = 9
-
-Step 1: (9 + 9 / 9)/2 = (9 + 1)/2 = 5.0
-
-Step 2: (5 + 9 / 5)/2 = (5 + 1.8)/2 = 3.4
-
-Step 3: (3.4 + 9 / 3.4)/2 ≈ 3.0235
-
-...
-
-After a few steps: ≈ 3.0000001 ✅ (very close to actual √9 = 3)
-```
-
-**Time Complexity**: O(log n)
+**Time Complexity**: O(log b)
 
 ---
 
@@ -371,5 +400,6 @@ Both functions return a double, so we cast it to int to get an integer.
 Question:
 Can you calculate floor and ceil without using Math.ceil or Math.floor ?
 ---
+
 
 

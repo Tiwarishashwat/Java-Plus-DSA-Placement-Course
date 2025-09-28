@@ -1,4 +1,3 @@
-
 # Maths for DSA – Part 2
 
 ## Armstrong Number
@@ -56,7 +55,7 @@ boolean isPalindrome(int n) {
     }
 ```
 
-- Every divisor of a number n comes in a pair (i, n/i) — and one of the numbers in each pair is always ≤ √n
+- Every divisor of a number n comes in a pair (i, n/i) — and one of the numbers in each pair is always ≤ √n.
 - If you check all numbers i from 1 to n, the naive way takes O(n) time.
 - But if i divides n, then n/i is also a divisor. So instead of going till n, we only go till √n, and for each valid i, we print both i and n/i.
 
@@ -71,7 +70,9 @@ i = 6 → 36 % 6 == 0, so both 6 and 6 are divisors (but same)
 ---
 
 ## Check Prime
+
 A prime number is a number greater than 1 that has no divisors other than 1 and itself.
+
 We only loop till √n (i.e., i * i <= n) instead of looping till n-1 because:
 
 If n has any divisor other than 1 and itself, one of them must be ≤ √n.
@@ -92,16 +93,18 @@ If n has any divisor other than 1 and itself, one of them must be ≤ √n.
     }
 ```
 
+**Time Complexity**: O(√n)
+
 ---
 
 ## Sieve of Eratosthenes
 
 **Goal**: Find all primes from 0 to n.
 
-It's a super-efficient algorithm to find all prime numbers from 0 to n.
+It's a super-efficient algorithm to find all prime numbers from 0 to n.  
 Instead of checking each number one by one, it marks all the non-prime (composite) numbers in a smart way.
 
-How it works:
+### How it works:
 ```
 Initialize all numbers as prime:
 We assume every number from 2 to n is prime (true).
@@ -189,13 +192,12 @@ The Greatest Common Divisor (GCD) of two numbers is the largest number that divi
     }
 ```
 
-Euclidean Algorithm Logic:
+### Euclidean Algorithm Logic:
 ```
 gcd(a, b) = gcd(a-b, b) // note a<=b
 ```
 
-efficient way is
-
+Efficient way is:
 
 ```
 gcd(a, b) = gcd(b, a % b)
@@ -216,9 +218,9 @@ gcd(48, 18)
 Why is this true?
 ```
 Because:
-The remainder (a % b) is made using a and b
-So, any number that divides a and b will also divide a % b
-And vice versa
+The remainder (a % b) is made using a and b.
+So, any number that divides a and b will also divide a % b.
+And vice versa.
 Thus, GCD doesn’t change — it just gets simpler!
 ```
 
@@ -240,8 +242,12 @@ Thus, GCD doesn’t change — it just gets simpler!
 ```
 **Time Complexity**: O(log(min(a, b)))
 
+---
+
 ### LCM
+
 The Least Common Multiple (LCM) of two numbers is the smallest number that is a multiple of both.
+
 We use the relationship:
 ```
 LCM(a, b) = (a * b) / GCD(a, b)
@@ -262,8 +268,9 @@ int lcm(int a, int b) {
 
 ---
 
-finding unique prime factors of a number
+## Unique and All Prime Factors
 
+### Find unique prime factors of a number
 ```java
     private ArrayList<Integer> findUniquePrimeFactors(int num){
         ArrayList<Integer> res = new ArrayList<>();
@@ -280,10 +287,9 @@ finding unique prime factors of a number
         }
         return res;
     }
-
 ```
-find all prime factors of a number
 
+### Find all prime factors of a number
 ```java
     private ArrayList<Integer> findAllPrimeFactors(int num){
         ArrayList<Integer> res = new ArrayList<>();
@@ -301,7 +307,10 @@ find all prime factors of a number
 ```
 
 ---
-find all Smallest Prime Factor (SPF) till num
+
+## Smallest Prime Factor (SPF)
+
+Find all Smallest Prime Factors (SPF) till num.
 
 ```java
 private ArrayList<Integer> findAllSPF(int num){
@@ -326,8 +335,10 @@ private ArrayList<Integer> findAllSPF(int num){
         return res;
     }
 ```
+
 ---
-Find factorial of a number
+
+## Factorial of a Number
 
 ```
 n! = n × (n-1) × (n-2) × ... × 2 × 1
@@ -342,19 +353,22 @@ n! = n × (n-1) × (n-2) × ... × 2 × 1
         System.out.println(res);
     }
 ```
+
+**Time Complexity**: O(n)
+
 ---
+
 ## Trailing Zeros in Factorial
 
 A trailing zero is a 0 at the end of a number.
-Example:
 
-100 has 2 trailing zeros
-
-5040 (which is 7!) has 1 trailing zero
+### Examples:
+- 100 has 2 trailing zeros  
+- 5040 (which is 7!) has 1 trailing zero
 
 ### Idea:
-Only pair of 2 and 5 forms a trailing zero.
-Since there are always more 2s than 5s in prime factors of a factorial, count number of 5s.
+Only a pair of 2 and 5 forms a trailing zero.  
+Since there are always more 2s than 5s in prime factors of a factorial, count the number of 5s.
 
 ```java
     public int trailingZeroes(int n) {
@@ -367,11 +381,10 @@ Since there are always more 2s than 5s in prime factors of a factorial, count nu
         return res;
     }
 ```
-
-
-
+**Time Complexity**: O(log n)
 
 ---
+
 ## Modular Arithmetic
 
 ### Rules
@@ -381,25 +394,26 @@ Since there are always more 2s than 5s in prime factors of a factorial, count nu
 
 ---
 
-**Time Complexity**: O(log b)
+**Time Complexity** (for modular exponentiation): O(log b)
 
 ---
 
 ## Ceil and Floor
+
 These functions are used to round a decimal number either up or down to the nearest integer.
-Math.ceil -> Returns the smallest integer that is greater than or equal to val. It rounds up.
-Math.floor -> Returns the largest integer that is less than or equal to val. It rounds down.
+
+- `Math.ceil` → Returns the smallest integer that is greater than or equal to val (rounds up).  
+- `Math.floor` → Returns the largest integer that is less than or equal to val (rounds down).
+
 ```java
 int ceil = (int)Math.ceil(val);
 int floor = (int)Math.floor(val);
 ```
 
 Both functions return a double, so we cast it to int to get an integer.
+
 **Time Complexity**: O(1)
 
-Question:
-Can you calculate floor and ceil without using Math.ceil or Math.floor ?
 ---
 
-
-
+**Question:** Can you calculate floor and ceil without using Math.ceil or Math.floor?

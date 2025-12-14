@@ -1,4 +1,7 @@
-
+class Node {
+    Node left;
+    Node right;
+}
 
 // User function Template for Java
 

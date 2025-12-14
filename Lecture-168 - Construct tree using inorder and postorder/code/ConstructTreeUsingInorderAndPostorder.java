@@ -44,7 +44,7 @@ class Solution {
         int rootIndex = indexMap.get(rootData);
         TreeNode root = new TreeNode(rootData);
         int leftTreeSize = rootIndex - inIndStart;
-        int rightTreeSize = inIndEnd - rootIndex;
+        // int rightTreeSize = inIndEnd - rootIndex;
         root.left = constructTree(postorder, inorder, indexMap, postIndStart,
                 postIndStart + leftTreeSize - 1, inIndStart, rootIndex - 1);
         root.right = constructTree(postorder, inorder, indexMap, postIndStart + leftTreeSize, postIndEnd - 1,

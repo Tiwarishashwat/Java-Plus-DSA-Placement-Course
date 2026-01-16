@@ -1,11 +1,8 @@
 public class BrianKernighanAlgoDemo {
     private int countBitsUsingBrianAlgo(int num){
-        if(num<0){
-            num = (~num + 1);
-        }
         int count=0;
-        while(num>0){
-            num = num & num-1;
+        while(num!=0){
+            num = num & (num-1);
             count++;
         }
         return count;
